@@ -14,7 +14,7 @@ que um jogador entre no sistema com seu email e pin.
 4) O sistema deverá permitir a um jogador buscar itens fornecendo parte do nome, descrição,
 categoria.
 ##
-# 
+# Daniel
 5) O sistema deverá permitir a um jogador selecionar um item seu e um item de outro usuário para
 abrir uma proposta de troca. A proposta de troca deverá registrar dia e hora.
 
