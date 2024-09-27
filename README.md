@@ -5,9 +5,12 @@
  * Organizamos cada função 
     
 # Funções 
+
 # Augusto 
 1) O sistema deverá permitir que um novo jogador se cadastre no sistema. O sistema deverá permitir
 que um jogador entre no sistema com seu email e pin.
+# Heitor 
+1.1) Colocar prooposta de compra 
 # Henrique 
 2) O sistema deverá permitir a um jogador listar os seus próprios itens, em ordem alfabética.
 3) O sistema deverá permitir a um jogador listar os itens dos demais jogadores, por ordem de preço.
