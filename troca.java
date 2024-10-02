@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 
 public class troca{
 
+
+    private user ofertante;
+    private user destinatario;
     private item[] itensDesejados;
     private item[] itensOferecidos;
     private LocalDateTime data;
@@ -17,9 +20,16 @@ public class troca{
 
     public String getOferecidos(){
         for(int i=0;i<itensOferecidos.length;i++){
-            System
+            itensOferecidos[i].getName;
         }
     }
+
+    public String getDesejados(){
+        for(int i=0;i<itensDesejados.length;i++){
+            itensDesejados[i].getName;
+        }
+    }
+
 
     public String toString(){
         
