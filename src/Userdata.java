@@ -47,6 +47,11 @@ public class Userdata {
         return null; //se tudo der certo jamais chegaremos aqui
     }
 
+    /**
+     * Verifica se o e-mail ja esta em uso
+     * @param email e-mail a ser verificado
+     * @return true se o e-mail ja esta em uso
+     */
     public boolean verificaEmail(String email) {
         for (User user : usuarios) {
             if(email.equals(user.getEmail())) {
@@ -56,6 +61,11 @@ public class Userdata {
         return false;
     }
 
+    /**
+     * Verifica se o nome de usuario ja esta em uso
+     * @param nome Nome de usuario a ser verificado
+     * @return True se o nome de usuario ja esta em uso
+     */
     public boolean verificaNome(String nome){
         for (User user : usuarios) {
             if(nome.equals(user.getNome())) {
@@ -63,5 +73,9 @@ public class Userdata {
             }
         }
         return false;
+    }
+
+    public void adicionar(User u){
+        usuarios.add(u);
     }
 }
