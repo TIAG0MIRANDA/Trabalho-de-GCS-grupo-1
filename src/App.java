@@ -92,14 +92,22 @@ public class App {
         while (vs){
             System.out.println("Nome de usuario: " + n);
             System.out.println("E-mail: " + e);
-            System.out.println("Digite sua senha (Minimo 8 caracteres):");
+            System.out.println("Digite sua senha (Exatamente 6 digitos, apenas numeros):");
             s = sc.nextLine();
-            if (s.length() < 8){
-                System.out.println("A senha possui menos de 8 caracteres, tente novamente." +
+            if (s.length() != 6){
+                System.out.println("A senha nao possui exatamente 6 digitos" +
                                     "\nDigite qualquer tecla.");
                 sc.nextLine();
             } else {
-                vs = false;
+                try {
+                    Integer.parseInt(s);
+                    vs = false;
+                } catch (Exception ex){
+                    System.out.println("A senha deve ser composta apenas por numeros"
+                                        + "\nDigite qualquer tecla");
+                    sc.nextLine();
+                }
+
             }
         }
 
