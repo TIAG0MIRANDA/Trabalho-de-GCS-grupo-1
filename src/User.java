@@ -7,11 +7,10 @@ public class User {
     private ArrayList<Item> inventario; //colocar itens aqui
 
 
-    public User(String nome, String email, String senha, int id) {
+    public User(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.id = id;
         //Ideia: metodo para adicionar itens aleatorios na criacao de usuario
         //randomizaitens();
     }
