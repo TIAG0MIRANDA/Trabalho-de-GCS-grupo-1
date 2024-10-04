@@ -9,14 +9,14 @@ public class Userdata {
 
 
     public Userdata() {
-        usuarios.add(new User("Admin","admin@email.com","123456"));
-        usuarios.add(new User("Pedro","pedro@email.com","654321"));
-        usuarios.add(new User("Mario","mario@email.com","234567"));
-        usuarios.add(new User("Ana","ana@email.com","098765"));
-        usuarios.add(new User("Joao","Joao@email.com","528529"));
-        usuarios.add(new User("Daniel","pedro@email.com","974168"));
-        usuarios.add(new User("Leandra","pedro@email.com","876543"));
-        usuarios.add(new User("Leandra","1","1"));
+        usuarios.add(new User("Admin","admin@email.com","123456",(usuarios.size()+1)));
+        usuarios.add(new User("Pedro","pedro@email.com","654321",(usuarios.size()+1)));
+        usuarios.add(new User("Mario","mario@email.com","234567",(usuarios.size()+1)));
+        usuarios.add(new User("Ana","ana@email.com","098765",(usuarios.size()+1)));
+        usuarios.add(new User("Joao","Joao@email.com","528529",(usuarios.size()+1)));
+        usuarios.add(new User("Daniel","pedro@email.com","974168",(usuarios.size()+1)));
+        usuarios.add(new User("Leandra","pedro@email.com","876543",(usuarios.size()+1)));
+        usuarios.add(new User("Leandra","1","1",(usuarios.size()+1)));
         usuarios.get(0).addItem("Lança-chamas", "Arma que dispara chamas de alta temperatura", 3500.00, 0, "Arma de Fogo");
         usuarios.get(0).addItem("Granada de Fragmentação", "Explosivo que se fragmenta e causa dano em área", 600.00, 1, "Explosivo");
         usuarios.get(0).addItem("Rifle de Assalto Avançado", "Arma de assalto com alta cadência de tiro e precisão", 4000.00, 2, "Arma de Fogo");
@@ -255,6 +255,23 @@ public class Userdata {
 
     }
 
+    public  boolean additemto(String name,String def,double val,int id,String ctg){
+
+        for(int i = 0;i <usuarios.size();i++){
+
+            if(id == usuarios.get(i).getId()){
+
+                usuarios.get(i).addItem(name,def,val,getitemcod(),ctg);
+                return true;
+
+            }
+
+        }
+
+        return false;
+        
+    }
+
     public void mercadoprint(int atual){
 
         ArrayList<Integer> gab = gabarito(); 
@@ -468,6 +485,13 @@ public class Userdata {
         }
 
 }
+
+    public int getUserId(){
+
+    return usuarios.size()+1;
+
+
+    }
 
 
 
