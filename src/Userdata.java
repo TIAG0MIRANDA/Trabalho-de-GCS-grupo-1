@@ -494,4 +494,27 @@ public class Userdata {
 
     }
 
+    public  int getowner(int itemid){
+
+        for(int i = 0;i < usuarios.size();i++){
+
+            for(int j = 0;j<usuarios.get(i).getInventario().size();j++){
+
+
+                if(itemid == usuarios.get(i).getInventario().get(j).getcod()){
+
+                    return usuarios.get(i).getId();
+
+                }
+
+            }
+        }
+
+        return -1;
+    }
+
+
+
+
+    
 }
