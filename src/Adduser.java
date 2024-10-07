@@ -1,3 +1,4 @@
+/*
 private ArrayList<Trade> trocas = new ArrayList<>();
 
 
@@ -15,3 +16,5 @@ private ArrayList<Trade> trocas = new ArrayList<>();
         }
     }
     
+ * 
+ */

@@ -1,3 +1,4 @@
+/*
 import java.util.List;
 
 public class Estatistica {
@@ -26,5 +27,6 @@ public class Estatistica {
 
         System.out.println("Total de itens: " + totalItens);
         System.out.printf("Soma total dos preços: R$ %.2f\n", somaPrecos);
-    }
-}
+        }
+        } 
+*/
