@@ -247,6 +247,8 @@ public class Userdata {
         usuarios.add(u);
     }
 
+
+
     public int getitemcod() {
 
         int tam = sizemercado(),cod = 0;
@@ -350,6 +352,34 @@ public class Userdata {
         }
 
         return false;
+
+    }
+
+    public void addpedidoTrocato(Trade troca,int index){
+
+       usuarios.get(index).addpedidoTroca(troca);
+    }
+
+    public void addsolicitacaoTrocato(Trade troca,int index){
+
+        usuarios.get(index).addsolicitacaoTroca(troca);
+        
+    }
+
+    public int getUserIndexbyId(int id){
+
+        for(int i = 0;i <usuarios.size();i++){
+
+                if(id == usuarios.get(i).getId()){
+    
+                    return i;
+    
+                }
+    
+            }
+    
+            return -1;
+
 
     }
 

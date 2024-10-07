@@ -168,6 +168,7 @@ public class App {
             System.out.println("[5] Excluir um item");
             System.out.println("[6] Fazer oferta de troca");
 
+            
             //TODO Inserir tudo que um usuario possa fazer enquanto logado
 
             switch (sc.nextLine()){
@@ -418,7 +419,13 @@ public class App {
                         destinatario=usuarios.getowner(codQuer);
                         quer=destinatario.getItem(codQuer);
                         oferta=remetente.getItem(codOferta);
-                        ofertaTroca=new Trade(oferta, quer, remetente, destinatario);}
+                        ofertaTroca=new Trade(oferta, quer, remetente, destinatario);
+                       
+                        usuarios.addpedidoTrocato(ofertaTroca,usuarios.getUserIndexbyId(usuarioAtual.getId()));
+                        usuarios.addsolicitacaoTrocato(ofertaTroca,destinatario.getId());
+                        usuarioAtual = usuarios.login(e, s);
+                    }
+
                     else{
                         //Caso o item que o usuário tente fazer a troca usando o código de um item que não é dele.
                     }
