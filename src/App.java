@@ -144,8 +144,6 @@ public class App {
         System.out.println("Nome de usuario: " + n);
         System.out.println("E-mail: " + e);
 
-        usuarios.adicionar(new User(n,e,s));
-
         usuarios.adicionar(new User(n,e,s,usuarios.getUserId()));
 
         System.out.println("Digite qualquer tecla para retornar a tela de login.");

@@ -1,48 +1,33 @@
 import java.util.ArrayList;
-
-
 import java.util.Arrays;
-
 
 public class User {
     private String nome, email, senha;
     public int id;
 
-
-    private ArrayList<Item> inventario; //colocar itens aqui
-
-
-    public User(String nome, String email, String senha) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-
-    
     private ArrayList<Item> inventory = new ArrayList<>();
 
-    public User(String nome, String email, String senha,int id) {
+    public User(String nome, String email, String senha, int id) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.id = id;
 
-        //Ideia: metodo para adicionar itens aleatorios na criacao de usuario
-        //randomizaitens();
+        // Ideia: metodo para adicionar itens aleatorios na criacao de usuario
+        // randomizaitens();
     }
 
+    public void addItem(String name, String def, double val, int cod, String ctg) {
 
-    public void addItem(String name,String def,double val,int cod,String ctg){
-
-
-        inventory.add(new Item(name,def,val,cod,ctg));
-
+        inventory.add(new Item(name, def, val, cod, ctg));
 
     }
 
-    public void inventarioprint(){
+    public void inventarioprint() {
 
-        System.out.println("|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
-        for(int i = 0; i<inventory.size();i++){
+        System.out.println(
+                "|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+        for (int i = 0; i < inventory.size(); i++) {
 
             inventory.get(i).itemPrint();
         }
@@ -50,39 +35,37 @@ public class User {
 
     }
 
-    public void ordenaitems(){
+    public void ordenaitems() {
 
-            String[] nomes = new String[inventory.size()]; 
-            
-            for(int i = 0; i <nomes.length;i++){
+        String[] nomes = new String[inventory.size()];
 
-                nomes[i] = inventory.get(i).getname().toUpperCase();
-                
-            }
+        for (int i = 0; i < nomes.length; i++) {
 
-            Arrays.sort(nomes);
-            
-            ArrayList<Item> temp = new ArrayList<>();
-            
-            for(int i = 0; i <nomes.length;i++){
-                
-                for(int j = 0; j <nomes.length;j++){
+            nomes[i] = inventory.get(i).getname().toUpperCase();
 
-                    if(nomes[i].equals(inventory.get(j).getname().toUpperCase())){
-
-                        temp.add(inventory.get(j));
-
-                    }
-                
-                }
-               
-            }
-
-            this.inventory = temp;
-            
         }
 
+        Arrays.sort(nomes);
 
+        ArrayList<Item> temp = new ArrayList<>();
+
+        for (int i = 0; i < nomes.length; i++) {
+
+            for (int j = 0; j < nomes.length; j++) {
+
+                if (nomes[i].equals(inventory.get(j).getname().toUpperCase())) {
+
+                    temp.add(inventory.get(j));
+
+                }
+
+            }
+
+        }
+
+        this.inventory = temp;
+
+    }
 
     public String getNome() {
         return nome;
@@ -101,18 +84,17 @@ public class User {
     }
 
     public ArrayList<Item> getInventario() {
-
-        return inventario;
-
+        
         return inventory;
     }
 
-    public Item getItem(int codItem){
-        for(int i=0;i<inventory.size();i++){
-            if(inventory.get(i).getcod()==codItem){
+    public Item getItem(int codItem) {
+        for (int i = 0; i < inventory.size(); i++) {
+            if (inventory.get(i).getcod() == codItem) {
                 return inventory.get(i);
             }
-        }return null;
+        }
+        return null;
 
     }
 }
