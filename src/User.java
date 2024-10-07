@@ -23,6 +23,28 @@ public class User {
 
     }
 
+    public void deleteItem(int itemcode){
+
+        inventory.remove(getItemIndex(itemcode));
+
+    }
+
+    private int getItemIndex(int itemcode){
+    
+        for(int i = 0;i < inventory.size() ;i++){
+
+            if(itemcode == inventory.get(i).getcod()){
+
+                return i;
+
+            }
+
+    }
+
+        return -1;
+
+    }
+
     public void inventarioprint() {
 
         System.out.println(
