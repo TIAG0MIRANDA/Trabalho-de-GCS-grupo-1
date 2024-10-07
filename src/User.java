@@ -25,38 +25,38 @@ public class User {
 
     }
 
-    public void deleteItem(int itemcode){
+    public void deleteItem(int itemcode) {
 
         inventory.remove(getItemIndex(itemcode));
 
     }
 
-    private int getItemIndex(int itemcode){
-    
-        for(int i = 0;i < inventory.size() ;i++){
+    private int getItemIndex(int itemcode) {
 
-            if(itemcode == inventory.get(i).getcod()){
+        for (int i = 0; i < inventory.size(); i++) {
+
+            if (itemcode == inventory.get(i).getcod()) {
 
                 return i;
 
             }
 
-    }
+        }
 
         return -1;
 
     }
 
-    public void addpedidoTroca(Trade troca){
+    public void addpedidoTroca(Trade troca) {
 
         propostasfeitas.add(troca);
 
     }
 
-    public void addsolicitacaoTroca(Trade troca){
+    public void addsolicitacaoTroca(Trade troca) {
 
         propostassolicitadasamim.add(troca);
-        
+
     }
 
     public void inventarioprint() {
@@ -120,7 +120,7 @@ public class User {
     }
 
     public ArrayList<Item> getInventario() {
-        
+
         return inventory;
     }
 
