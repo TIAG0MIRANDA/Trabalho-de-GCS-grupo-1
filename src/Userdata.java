@@ -247,14 +247,25 @@ public class Userdata {
         usuarios.add(u);
     }
 
+
+
     public int getitemcod() {
 
-        int cod = 0;
+        int tam = sizemercado(),cod = 0;
+        
+        while(cod < tam){
 
-        for (int i = 0; i < usuarios.size(); i++) {
+                if(itemexist(cod)){
 
-            cod += usuarios.get(i).getInventario().size();
+                        cod++;
 
+                 }
+                 else{
+
+                    break;    
+                
+                }
+  
         }
 
         return cod;
@@ -341,6 +352,34 @@ public class Userdata {
         }
 
         return false;
+
+    }
+
+    public void addpedidoTrocato(Trade troca,int index){
+
+       usuarios.get(index).addpedidoTroca(troca);
+    }
+
+    public void addsolicitacaoTrocato(Trade troca,int index){
+
+        usuarios.get(index).addsolicitacaoTroca(troca);
+        
+    }
+
+    public int getUserIndexbyId(int id){
+
+        for(int i = 0;i <usuarios.size();i++){
+
+                if(id == usuarios.get(i).getId()){
+    
+                    return i;
+    
+                }
+    
+            }
+    
+            return -1;
+
 
     }
 
@@ -558,6 +597,49 @@ public class Userdata {
         }
 
         return null;
+    }
+
+
+    public boolean itemexist(int cod){
+
+        boolean existe = false;
+
+        for(int i = 0; i<usuarios.size();i++){
+
+                for (int j = 0; j < usuarios.get(i).getInventario().size(); j++) {
+
+                        if(cod == usuarios.get(i).getInventario().get(j).getcod()){
+
+                                existe = true;
+                                return existe;
+
+                        }
+                       
+
+                }
+        }
+
+        return existe;
+
+
+    }
+
+    public int sizemercado(){
+
+        int tam = 0;
+
+        for(int i = 0; i<usuarios.size();i++){
+
+                for (int j = 0; j < usuarios.get(i).getInventario().size(); j++) {
+
+                       
+                        tam++;
+                       
+
+                }
+        }
+
+                return tam;
     }
 
 }

@@ -9,6 +9,7 @@ public class Trade {
         private Item itemDesejado;
         private LocalDateTime momentoTroca;//Classe que vai ser usada para armazenar o momento que 
                                            //a troca foi feita
+        
 
         public  Trade(Item offer, Item wish, User Sender, User Receiver){
                 //Offer= item que está sendo ofertado pelo criador da troca
@@ -28,5 +29,29 @@ public class Trade {
                 +itemOferecido.getname()+" e ele quer o"+itemDesejado.getname()
                 +" do usuário: "+Receiver.getNome()+" em troca.\n A troca foi feita as:"+momentoTroca.getHour()
                 +" da data:"+momentoTroca.getDayOfMonth()+"-"+momentoTroca.getMonth()+"-"+momentoTroca.getYear()+".");
+        }
+
+        public User getSender() {
+                return Sender;
+        }
+            
+        public User getReceiver() {
+       
+                return Receiver;
+        }
+
+        public Item getItemOferecido() {
+        
+                return itemOferecido;
+        }
+
+        public Item getItemDesejado() {
+       
+                return itemDesejado;
+        }
+
+        public LocalDateTime getMomentoTroca() {
+        
+                return momentoTroca;
         }
 }

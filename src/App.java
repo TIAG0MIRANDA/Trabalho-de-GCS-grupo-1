@@ -26,16 +26,16 @@ public class App {
                     a = false;
                     break;
                 case "1":
-
+                Clear.clear();
                     login();
                     break;
                 case "2":
+                Clear.clear();
                     cadastro();
                     break;
 
                 default:
                     Clear.clear();
-
                     System.out.println("Opcao invalida, digite qualquer tecla");
                     sc.nextLine();
                     break;
@@ -50,11 +50,6 @@ public class App {
      */
     public void login(){
         System.out.println("Digite seu e-mail: ");
-
-        String e = sc.nextLine();
-        System.out.println("Digite sua senha: ");
-        String s = sc.nextLine();
-
         e = sc.nextLine();
         System.out.println("Digite sua senha: ");
         s = sc.nextLine();
@@ -170,8 +165,10 @@ public class App {
             System.out.println("[2] Ver o mercado de items");
             System.out.println("[3] Realizar uma busca");
             System.out.println("[4] Adcionar um item");
-            System.out.println("[5] Fazer oferta de troca");
+            System.out.println("[5] Excluir um item");
+            System.out.println("[6] Fazer oferta de troca");
 
+            
             //TODO Inserir tudo que um usuario possa fazer enquanto logado
 
             switch (sc.nextLine()){
@@ -182,10 +179,8 @@ public class App {
                             + "\nDigite qualquer tecla.");
                 break;
 
-                default:
-                    System.out.println("Opcao invalida, digite qualquer tecla");
-                    sc.nextLine();
-
+               
+                   
                 case "1":
                     
                     Clear.clear();
@@ -406,7 +401,7 @@ public class App {
                     }
                 }
                 break;
-                case "5":
+                case "6":
                     Clear.clear();
                     Trade ofertaTroca;
                     Item quer,oferta;//Itens que o usuário quer e o que ele vai dar em troca
@@ -424,12 +419,40 @@ public class App {
                         destinatario=usuarios.getowner(codQuer);
                         quer=destinatario.getItem(codQuer);
                         oferta=remetente.getItem(codOferta);
-                        ofertaTroca=new Trade(oferta, quer, remetente, destinatario);}
+                        ofertaTroca=new Trade(oferta, quer, remetente, destinatario);
+                       
+                        usuarios.addpedidoTrocato(ofertaTroca,usuarios.getUserIndexbyId(usuarioAtual.getId()));
+                        usuarios.addsolicitacaoTrocato(ofertaTroca,destinatario.getId());
+                        usuarioAtual = usuarios.login(e, s);
+                    }
+
                     else{
                         //Caso o item que o usuário tente fazer a troca usando o código de um item que não é dele.
                     }
                 break;
 
+                case "5":
+                Clear.clear();
+                System.out.println("digite o codigo do item a ser deletado!");
+                int c = BetterScanner.scannerInt(sc);
+                if(usuarioAtual.id == usuarios.getowner(c).getId()){
+                Clear.clear();
+                System.out.println("|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+                usuarioAtual.getItem(c).itemPrint();
+                System.out.println("Confirma a exclusao do item? digite 1");
+                System.out.println("Caso contrario digite 2");
+                if(BetterScanner.scannerInt(sc) == 1){
+                usuarioAtual.deleteItem(c);
+                }
+                }
+                else{
+                System.out.println("O voce nao tem um item com esse codigo!");
+                System.out.println("digite algo para voltar");
+                }
+
+                break;
+
+                default:
             }
         }
     }
