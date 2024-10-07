@@ -87,4 +87,12 @@ public class User {
     public ArrayList<Item> getInventario() {
         return inventory;
     }
+
+    public Item getItem(int codItem){
+        for(int i=0;i<inventory.size();i++){
+            if(inventory.get(i).getcod()==codItem){
+                return inventory.get(i);
+            }
+        }return null;
+    }
 }

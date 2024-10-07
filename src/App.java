@@ -143,6 +143,7 @@ public class App {
             System.out.println("[2] Ver o mercado de items");
             System.out.println("[3] Realizar uma busca");
             System.out.println("[4] Adcionar um item");
+            System.out.println("[5] Fazer oferta de troca");
 
             //TODO Inserir tudo que um usuario possa fazer enquanto logado
 
@@ -373,6 +374,29 @@ public class App {
 
                     }
                 }
+                break;
+                case "5":
+                    Clear.clear();
+                    Trade ofertaTroca;
+                    Item quer,oferta;//Itens que o usuário quer e o que ele vai dar em troca
+                    int codQuer,codOferta;//Codigo do item que o usuário quer e o que ele vai dar em troca
+                    User remetente,destinatario;//User remetente IOW:O usuário atual esperançosamente
+                    // e Destinatario é o user da pessoa que tem o item desejado
+                    System.out.print("Insira o código do item que deseja adquirir:");
+                    codQuer=sc.nextInt();
+                    
+                    System.out.print("Insira o código do item que deseja oferecer em troca:");
+                    codOferta=sc.nextInt();
+                    
+                    remetente=usuarios.getowner(codOferta);
+                    if(remetente==usuarioAtual){
+                        destinatario=usuarios.getowner(codQuer);
+                        quer=destinatario.getItem(codQuer);
+                        oferta=remetente.getItem(codOferta);
+                        ofertaTroca=new Trade(oferta, quer, remetente, destinatario);}
+                    else{
+                        //Caso o item que o usuário tente fazer a troca usando o código de um item que não é dele.
+                    }
                 break;
                 default:
                    

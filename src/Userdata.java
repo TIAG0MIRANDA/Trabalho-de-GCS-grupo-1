@@ -494,7 +494,7 @@ public class Userdata {
 
     }
 
-    public  int getowner(int itemid){
+    public  User getowner(int itemid){
 
         for(int i = 0;i < usuarios.size();i++){
 
@@ -503,14 +503,14 @@ public class Userdata {
 
                 if(itemid == usuarios.get(i).getInventario().get(j).getcod()){
 
-                    return usuarios.get(i).getId();
+                    return usuarios.get(i);
 
                 }
 
             }
         }
 
-        return -1;
+        return null;
     }
 
 
