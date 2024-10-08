@@ -88,7 +88,14 @@ public class App {
                 System.out.println("Este nome de usuario ja esta em uso, tente novamente."
                         + "\n Digite qualquer tecla");
                 sc.nextLine();
-            } else {
+            } else if(Censura.censura(n)){
+
+                System.out.println("O sistema nao aceita nomes ofensivos."
+                + "\n Digite qualquer tecla");
+             sc.nextLine();
+
+            }
+            else {
                 vn = false;
             }
         }
