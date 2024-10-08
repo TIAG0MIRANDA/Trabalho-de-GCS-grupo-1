@@ -182,6 +182,8 @@ public class App {
             System.out.println("[4] Adcionar um item");
             System.out.println("[5] Excluir um item");
             System.out.println("[6] Fazer oferta de troca");
+            System.out.println("[7] Listar propostas feitas");
+            System.out.println("[8] Listar propostas recebidas");
 
             // TODO Inserir tudo que um usuario possa fazer enquanto logado
 
@@ -458,6 +460,18 @@ public class App {
                         System.out.println("digite algo para voltar");
                     }
 
+                    break;
+
+                case "7":
+                    Clear.clear();
+                    usuarioAtual.listarTrocasFeitas();
+                    sc.nextLine();
+                    break;
+
+                case "8":
+                    Clear.clear();
+                    usuarioAtual.listarTrocasRecebidas();
+                    sc.nextLine();
                     break;
 
                 default:
