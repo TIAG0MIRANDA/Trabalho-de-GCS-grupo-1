@@ -149,11 +149,13 @@ public class App {
 
     public void mostrarEstatisticas() {
         int totalUsuarios = usuarios.getTotalUsuarios();
-        int totalItens = item.getTotalItens();
+        int totalItens = usuarios.sizemercado();
+        double totalpreco = usuarios.getTotalpreco();
 
         System.out.println("=== Estatísticas do Sistema ===");
         System.out.println("Total de usuários cadastrados: " + totalUsuarios);
         System.out.println("Total de Itens: " + totalItens);
+        System.out.println("Total de preço: " + totalpreco);
         System.out.println("Digite qualquer tecla para voltar.");
         sc.nextLine(); // Aguarda o usuário pressionar uma tecla para voltar
     }

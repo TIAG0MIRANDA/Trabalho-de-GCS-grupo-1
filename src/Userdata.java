@@ -17,7 +17,7 @@ public class Userdata {
         }
 
         public int getTotalUsuarios() {
-                return usuarios.size(); 
+                return usuarios.size();
         }
 
         public Userdata() {
@@ -692,7 +692,7 @@ public class Userdata {
 
         }
 
-        public int sizemercado() {
+        public int sizemercado() { // soma dos itens
 
                 int tam = 0;
 
@@ -708,4 +708,19 @@ public class Userdata {
                 return tam;
         }
 
+        public double getTotalpreco() {
+                                                
+                double price =0;
+
+                for(int i=0;i<usuarios.size ();i++) {
+
+                               for(int j =0; j < usuarios.get(i).getInventario().size(); j++) {
+
+                        price += usuarios.get(i).getInventario().get(j).getprice();
+
+                        }
+                }
+
+                return price;
+        }
 }
