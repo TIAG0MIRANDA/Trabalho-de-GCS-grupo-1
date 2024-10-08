@@ -7,3 +7,5 @@ Links para commits:
 [Corrigindo o inicial](https://github.com/TIAG0MIRANDA/Trabalho-de-GCS-grupo-1/commit/0d76434dd9f0309e263cedbc712352465e63c1f9)
 
 [Adicionando](https://github.com/TIAG0MIRANDA/Trabalho-de-GCS-grupo-1/commit/4a093eb86c56a6d9d13cc966a411579b847f2ed0)
+
+[ajuatando](https://github.com/TIAG0MIRANDA/Trabalho-de-GCS-grupo-1/commit/dc66e839e406b02e841d5a826d3d6a6ad0f4b9a5)
