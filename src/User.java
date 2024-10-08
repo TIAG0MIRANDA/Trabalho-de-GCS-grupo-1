@@ -6,8 +6,6 @@ public class User {
     public int id;
 
     private ArrayList<Item> inventory = new ArrayList<>();
-    private ArrayList<Trade> propostasfeitas = new ArrayList<>();
-    private ArrayList<Trade> propostassolicitadasamim = new ArrayList<>();
     private ArrayList<Trade> trocasFeitas = new ArrayList<>();
     private ArrayList<Trade> trocasRecebidas = new ArrayList<>();
 
@@ -48,19 +46,7 @@ public class User {
         return -1;
 
     }
-
-    public void addpedidoTroca(Trade troca) {
-
-        propostasfeitas.add(troca);
-
-    }
-
-    public void addsolicitacaoTroca(Trade troca) {
-
-        propostassolicitadasamim.add(troca);
-
-    }
-
+    
     public void inventarioprint() {
 
         System.out.println(

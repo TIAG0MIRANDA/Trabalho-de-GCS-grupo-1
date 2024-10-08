@@ -426,12 +426,12 @@ public class Userdata {
 
         public void addpedidoTrocato(Trade troca, int index) {
 
-                usuarios.get(index).addpedidoTroca(troca);
+                usuarios.get(index).addTrocaFeita(troca);
         }
 
         public void addsolicitacaoTrocato(Trade troca, int index) {
 
-                usuarios.get(index).addsolicitacaoTroca(troca);
+                usuarios.get(index).addTrocaRecebida(troca);
 
         }
 
