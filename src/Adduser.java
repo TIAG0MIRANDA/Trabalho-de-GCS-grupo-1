@@ -16,5 +16,4 @@ private ArrayList<Trade> trocas = new ArrayList<>();
         }
     }
     
- * 
  */

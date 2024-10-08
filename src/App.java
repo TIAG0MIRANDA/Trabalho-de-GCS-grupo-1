@@ -6,7 +6,7 @@ public class App {
     private User usuarioAtual = null; // usuario logado no sistema
 
     String e, s;
-    
+
     public void executar() {
         boolean a = true;
         while (a) {
@@ -16,7 +16,7 @@ public class App {
             System.out.println("[0] Sair");
             System.out.println("[1] Login");
             System.out.println("[2] Cadastro");
-            System.out.println("[3] Estatísticas"); 
+            System.out.println("[3] Estatísticas");
 
             switch (sc.nextLine()) {
                 case "0":
@@ -36,7 +36,7 @@ public class App {
                     break;
                 case "3":
                     Clear.clear();
-                    mostrarEstatisticas(); 
+                    mostrarEstatisticas();
                     break;
 
                 default:
@@ -148,16 +148,13 @@ public class App {
     }
 
     public void mostrarEstatisticas() {
-        int totalUsuarios = usuarios.getTotalUsuarios(); // Método que você deve implementar na classe Userdata
-        int totalItens = usuarios.getTotalItens(); // Método que você deve implementar na classe Userdata
-    
+        int totalUsuarios = usuarios.getTotalUsuarios();
+
         System.out.println("=== Estatísticas do Sistema ===");
         System.out.println("Total de usuários cadastrados: " + totalUsuarios);
-        System.out.println("Total de itens cadastrados: " + totalItens);
         System.out.println("Digite qualquer tecla para voltar.");
         sc.nextLine(); // Aguarda o usuário pressionar uma tecla para voltar
     }
-    
 
     /**
      * A partir deste metodo o usuario ira interagir com o resto do sistema quando
