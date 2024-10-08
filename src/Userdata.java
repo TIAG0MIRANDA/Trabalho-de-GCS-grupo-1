@@ -7,7 +7,21 @@ import java.util.Arrays;
 public class Userdata {
         private ArrayList<User> usuarios = new ArrayList<>();
 
+        // Método para adicionar usuários (se necessário)
+        public void adicionarUsuario(Userdata usuario) {
+                usuarios.add(usuario.size());
+        }
+
+        private User size() {
+                throw new UnsupportedOperationException("Unimplemented method 'size'");
+        }
+
+        public int getTotalUsuarios() {
+                return usuarios.size(); 
+        }
+
         public Userdata() {
+                this.usuarios = new ArrayList<>();
 
                 usuarios.add(new User("Admin", "admin@email.com", "123456", (usuarios.size())));
                 usuarios.add(new User("Pedro", "pedro@email.com", "654321", (usuarios.size())));
