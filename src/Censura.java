@@ -46,7 +46,9 @@ public class Censura {
        string = string.replace('0','o');
        string = string.replace('3','e');
        string = string.replace('5','s');
-           
+       string = string.replace('4','a');
+       string = string.replace('7','t');  
+        
         for(String censura: palavrasbloqueadas){
 
             if(string.toLowerCase().contains(censura.toLowerCase())){
