@@ -298,10 +298,9 @@ public class App {
                             System.out.println("[2] Defesa");
                             System.out.println("[3] Explosivo");
                             System.out.println("[4] Arma Branca");
-                            System.out.println("[5] Defesa");
-                            System.out.println("[6] Tecnologia Militar");
-                            System.out.println("[7] Equipamento");
-                            System.out.println("[8] Munição");
+                            System.out.println("[5] Tecnologia Militar");
+                            System.out.println("[6] Equipamento");
+                            System.out.println("[7] Munição");
 
                             String ctg;
 
@@ -380,10 +379,9 @@ public class App {
                         System.out.println("[2] Defesa");
                         System.out.println("[3] Explosivo");
                         System.out.println("[4] Arma Branca");
-                        System.out.println("[5] Defesa");
-                        System.out.println("[6] Tecnologia Militar");
-                        System.out.println("[7] Equipamento");
-                        System.out.println("[8] Munição");
+                        System.out.println("[5] Tecnologia Militar");
+                        System.out.println("[6] Equipamento");
+                        System.out.println("[7] Munição");
 
                         itemctg = usuarios.getctg(BetterScanner.scannerInt(sc));
                         Clear.clear();

@@ -631,12 +631,9 @@ public class Userdata {
                                 return "Arma Branca";
 
                         case 5:
-                                return "Defesa";
-
-                        case 6:
                                 return "Tecnologia Militar";
 
-                        case 7:
+                        case 6:
                                 return "Equipamento";
 
                         default:
