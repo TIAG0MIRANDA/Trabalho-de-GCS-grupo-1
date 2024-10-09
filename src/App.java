@@ -88,14 +88,13 @@ public class App {
                 System.out.println("Este nome de usuario ja esta em uso, tente novamente."
                         + "\n Digite qualquer tecla");
                 sc.nextLine();
-            } else if(Censura.censura(n)){
+            } else if (Censura.censura(n)) {
 
                 System.out.println("O sistema nao aceita nomes ofensivos."
-                + "\n Digite qualquer tecla");
-             sc.nextLine();
+                        + "\n Digite qualquer tecla");
+                sc.nextLine();
 
-            }
-            else {
+            } else {
                 vn = false;
             }
         }
@@ -362,22 +361,41 @@ public class App {
 
                     while (!loop) {
                         Clear.clear();
-                        System.out.printf("[1] nome do item %s\n", nomeitem);
                         do {
+                            System.out.printf("[1] nome do item %s\n", nomeitem);
                             nomeitem = sc.nextLine();
+                            if (Censura.censura(nomeitem)) {
+                                System.out.println("O sistema nao aceita nomes ofensivos."
+                                        + "\n Digite qualquer tecla");
+                                sc.nextLine();
+                                nomeitem = "";
+                            }
+                        Clear.clear();
                         } while (nomeitem.length() <= 0);
                         Clear.clear();
-                        System.out.printf("[1] nome do item %s\n", nomeitem);
-                        System.out.printf("[2] def do item \n", defitem);
-                        defitem = sc.nextLine();
+                        do {
+                            Clear.clear();
+                            System.out.printf("[1] nome do item %s\n", nomeitem);
+                            System.out.printf("[2] definição do item \n", defitem);
+                            defitem = sc.nextLine();
+                            
+                            if (Censura.censura(defitem)) {
+                                System.out.println("O sistema nao aceita nomes ofensivos."
+                                        + "\n Digite qualquer tecla"); 
+                                        
+                                sc.nextLine();
+                                defitem = "";
+                            }
+                        }   while (defitem.length() <= 0);                      
+                        
                         Clear.clear();
                         System.out.printf("[1] nome do item %s\n", nomeitem);
-                        System.out.printf("[2] def do item %s\n", defitem);
+                        System.out.printf("[2] definição do item %s\n", defitem);
                         System.out.printf("[3] valor do item %f\n", valitem);
                         valitem = BetterScanner.scannerDouble(sc);
                         Clear.clear();
                         System.out.printf("[1] nome do item %s\n", nomeitem);
-                        System.out.printf("[2] def do item %s\n", defitem);
+                        System.out.printf("[2] definição do item %s\n", defitem);
                         System.out.printf("[3] valor do item %f\n", valitem);
                         System.out.println("Digite algo para ir para escolha de categoria");
                         sc.next();
@@ -395,7 +413,7 @@ public class App {
                         itemctg = usuarios.getctg(BetterScanner.scannerInt(sc));
                         Clear.clear();
                         System.out.printf("[1] nome do item - %s\n", nomeitem);
-                        System.out.printf("[2] def do item - %s\n", defitem);
+                        System.out.printf("[2] definição do item - %s\n", defitem);
                         System.out.printf("[3] valor do item - %f\n", valitem);
                         System.out.printf("[4] categoria - %s\n", itemctg);
                         System.out.println("Para confirmar digite 1");
