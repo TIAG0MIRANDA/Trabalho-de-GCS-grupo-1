@@ -41,9 +41,12 @@ public class Censura {
 
 
     public static boolean censura(String string){
-
-        
-
+    
+       string = string.replace('1','i');
+       string = string.replace('0','o');
+       string = string.replace('3','e');
+       string = string.replace('5','s');
+           
         for(String censura: palavrasbloqueadas){
 
             if(string.toLowerCase().contains(censura.toLowerCase())){
@@ -57,8 +60,5 @@ public class Censura {
             return false;
 
     }
-
-
-
 
 }
