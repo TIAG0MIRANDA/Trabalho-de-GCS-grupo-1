@@ -9,4 +9,4 @@ Links para commits:
 [Adição do método de detalhar proposta, trocar e declinar](https://github.com/TIAG0MIRANDA/Trabalho-de-GCS-grupo-1/commit/81d0e507c2d0b88d1b248eff3fb68200facc53ee)
 
 
-Principais dificuldades: Entender o sistema como um todo, entender partes de código que não estou familiarizada para entender o funcionamento geral, adaptação às mudanças rápidas do sistema.
+Principais dificuldades: Entender o sistema como um todo, entender partes de código que não estou familiarizada para entender o funcionamento geral e adaptação às mudanças rápidas do sistema.
