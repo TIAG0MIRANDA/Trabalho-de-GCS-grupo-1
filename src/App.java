@@ -166,7 +166,7 @@ public class App {
                 System.out.println("Digite o número da proposta escolhida: ");
                 int number = sc.nextInt();
                 if (number < propostas.size() && number >= 0) {
-                    Trade propEscolhida = propostas.get(number - 1);
+                    Trade propEscolhida = propostas.get(number);
                     System.out.println("Proposta esolhida: ");
                     propEscolhida.verProposta();
                     System.out.println();
