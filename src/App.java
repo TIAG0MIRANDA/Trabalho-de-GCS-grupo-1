@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -153,6 +154,43 @@ public class App {
 
     }
 
+    public void detalharProposta(){
+        ArrayList<Trade> propostas = usuarioAtual.getTrocasRecebidas();
+        for(int i=0;i<propostas.size();i++){
+            System.out.println(i+". "+propostas.get(i).getSender().getNome());
+        }
+
+        if(!propostas.isEmpty()) {
+            System.out.println("=== Escolha uma proposta: ===");
+            while (true) {
+                System.out.println("Digite o número da proposta escolhida: ");
+                int number = sc.nextInt();
+                if (number < propostas.size() && number >= 0) {
+                    Trade propEscolhida = propostas.get(number - 1);
+                    System.out.println("Proposta esolhida: ");
+                    propEscolhida.verProposta();
+                    System.out.println();
+                    System.out.println("=== Você aceita a proposta? ===");
+                    System.out.println("[1] Sim");
+                    System.out.println("[2] Não");
+                    number = sc.nextInt();
+                    if (number == 1) {
+                        propEscolhida.trocar();
+                    } else if (number == 2) {
+                        propEscolhida.declinar();
+                    } else {
+                        System.out.println("Número inválido, tente novamente!");
+                        continue;
+                    }
+                    break;
+                }
+            }
+        }else{
+            System.out.println("Você não recebeu nenhuma proposta!");
+        }
+
+    }
+
     public void mostrarEstatisticas() {
         int totalUsuarios = usuarios.getTotalUsuarios();
         int totalItens = usuarios.sizemercado();
@@ -190,6 +228,7 @@ public class App {
             System.out.println("[6] Fazer oferta de troca");
             System.out.println("[7] Listar propostas feitas");
             System.out.println("[8] Listar propostas recebidas");
+            System.out.println("[9] Detalhar uma proposta");
 
             // TODO Inserir tudo que um usuario possa fazer enquanto logado
 
@@ -452,7 +491,7 @@ public class App {
                         quer = destinatario.getItem(codQuer);
                         oferta = remetente.getItem(codOferta);
                         ofertaTroca = new Trade(oferta, quer, remetente, destinatario);
-
+                        
                         usuarios.addpedidoTrocato(ofertaTroca, usuarios.getUserIndexbyId(usuarioAtual.getId()));
                         usuarios.addsolicitacaoTrocato(ofertaTroca, destinatario.getId());
                         usuarioAtual = usuarios.login(e, s);
@@ -496,7 +535,11 @@ public class App {
                     usuarioAtual.listarTrocasRecebidas();
                     sc.nextLine();
                     break;
-
+                case "9":
+                    Clear.clear();
+                    detalharProposta();
+                    sc.nextLine();
+                    break;
                 default:
             }
         }
