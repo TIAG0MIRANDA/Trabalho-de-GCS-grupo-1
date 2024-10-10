@@ -12,9 +12,9 @@ public class Userdata {
         usuarios.add(new User("Pedro","pedro@email.com","654321"));
         usuarios.add(new User("Mario","mario@email.com","234567"));
         usuarios.add(new User("Ana","ana@email.com","098765"));
-        usuarios.add(new User("Joao","Joao@email.com","528529"));
-        usuarios.add(new User("Daniel","pedro@email.com","974168"));
-        usuarios.add(new User("Leandra","pedro@email.com","876543"));
+        usuarios.add(new User("Joao","joao@email.com","528529"));
+        usuarios.add(new User("Daniel","daniel@email.com","974168"));
+        usuarios.add(new User("Leandra","leandra@email.com","876543"));
     }
 
     /**
