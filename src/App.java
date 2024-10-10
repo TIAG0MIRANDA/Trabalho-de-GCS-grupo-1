@@ -5,6 +5,8 @@ public class App {
     private Scanner sc = new Scanner(System.in);
     private Userdata usuarios = new Userdata(); // usuarios serao guardados aqui
     private User usuarioAtual = null; // usuario logado no sistema
+    int totalTrocasAceitas = 0;
+    //int TotalTrocasDeclinads = 0;
 
     String e, s;
 
@@ -195,13 +197,19 @@ public class App {
         int totalUsuarios = usuarios.getTotalUsuarios();
         int totalItens = usuarios.sizemercado();
         double totalpreco = usuarios.getTotalpreco();
+        int totalTrocasAceitas = usuarios.getTotalTrocasAceitas();
+        int totalTrocasDeclinadas = usuarios.getTotalTrocasDeclinads();
+        int totalTrocasEspeando = usuarios.getTotalTrocasEsperando();
 
         System.out.println("=== Estatísticas do Sistema ===");
         System.out.println("Total de usuários cadastrados: " + totalUsuarios);
-        System.out.println("Total de Itens: " + totalItens);
+        System.out.println("Total de itens: " + totalItens);
         System.out.println("Total de preço: " + totalpreco);
+        System.out.println("Total de troca aceitas: " + totalTrocasAceitas);
+        System.out.println("Total de troca declinadas: " + totalTrocasDeclinadas);
+        System.out.println("Total de troca aguardando respostas: " + totalTrocasEspeando);
         System.out.println("Digite qualquer tecla para voltar.");
-        sc.nextLine(); // Aguarda o usuário pressionar uma tecla para voltar
+        sc.nextLine(); 
     }
 
     /**

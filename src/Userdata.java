@@ -706,18 +706,66 @@ public class Userdata {
         }
 
         public double getTotalpreco() {
-                                                
-                double price =0;
 
-                for(int i=0;i<usuarios.size ();i++) {
+                double price = 0;
 
-                               for(int j =0; j < usuarios.get(i).getInventario().size(); j++) {
+                for (int i = 0; i < usuarios.size(); i++) {
 
-                        price += usuarios.get(i).getInventario().get(j).getprice();
+                        for (int j = 0; j < usuarios.get(i).getInventario().size(); j++) {
+
+                                price += usuarios.get(i).getInventario().get(j).getprice();
 
                         }
                 }
 
                 return price;
         }
+
+        public int getTotalTrocasAceitas() {
+
+                int total = 0;
+
+                for (int i = 0; i < usuarios.size(); i++) {
+
+                        for (int j = 0; j < usuarios.get(i).getTrocasFeitas().size(); j++) {
+
+                                total++;
+
+                        }
+                }
+
+                return total;
+        }
+
+        public int getTotalTrocasDeclinads() {
+
+                int total = 0;
+
+                for (int i = 0; i < usuarios.size(); i++) {
+
+                        for (int j = 0; j < usuarios.get(i).getTrocasFeitas().size(); j++) {
+
+                                total++;
+
+                        }
+                }
+
+                return total;
+        }
+        public int getTotalTrocasEsperando() {
+
+                int total = 0;
+
+                for (int i = 0; i < usuarios.size(); i++) {
+
+                        for (int j = 0; j < usuarios.get(i).getTrocasFeitas().size(); j++) {
+
+                                total++;
+
+                        }
+                }
+
+                return total;
+        }
+
 }
