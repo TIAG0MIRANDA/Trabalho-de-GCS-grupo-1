@@ -130,6 +130,14 @@ public class User {
         trocasRecebidas.add(troca);
     }
 
+     public ArrayList<Trade> getTrocasRecebidas(){
+        return trocasRecebidas;
+    }
+
+    public ArrayList<Trade> getTrocasFeitas(){
+        return trocasFeitas;
+    }
+
     public void listarTrocasFeitas() {
         if (trocasFeitas.isEmpty()) {
             System.out.println("Nenhuma proposta de troca feita.");
