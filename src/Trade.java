@@ -31,6 +31,28 @@ public class Trade {
                 +" da data:"+momentoTroca.getDayOfMonth()+"-"+momentoTroca.getMonth()+"-"+momentoTroca.getYear()+".");
         }
 
+        public void trocar(){
+                ArrayList<Item> inventario1 = getSender().getInventario();
+                ArrayList<Item> inventario2 = getReceiver().getInventario();
+
+                inventario1.add(itemDesejado);
+                getSender().deleteItem(itemOferecido.getcod());
+
+                inventario2.add(itemOferecido);
+                getReceiver().deleteItem(itemDesejado.getcod());
+
+                ArrayList<Trade> trocas = getSender().getTrocasFeitas();
+                trocas.remove(this);
+                trocas = getReceiver().getTrocasRecebidas();
+                trocas.remove(this);
+        }
+
+        public void declinar(){
+                ArrayList<Trade> trocas = getSender().getTrocasFeitas();
+                trocas.remove(this);
+                trocas = getReceiver().getTrocasRecebidas();
+                trocas.remove(this);
+        }
         public User getSender() {
                 return Sender;
         }
