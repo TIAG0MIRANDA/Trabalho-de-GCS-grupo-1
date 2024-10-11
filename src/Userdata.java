@@ -1030,38 +1030,6 @@ public class Userdata {
                 return price;
         }
 
-        public int getTotalTrocasAceitas() {
-
-                int total = 0;
-
-                for (int i = 0; i < usuarios.size(); i++) {
-
-                        for (int j = 0; j < usuarios.get(i).getTrocasFeitas().size(); j++) {
-
-                                total++;
-
-                        }
-                }
-
-                return total;
-        }
-
-        public int getTotalTrocasDeclinads() {
-
-                int total = 0;
-
-                for (int i = 0; i < usuarios.size(); i++) {
-
-                        for (int j = 0; j < usuarios.get(i).getTrocasFeitas().size(); j++) {
-
-                                total++;
-
-                        }
-                }
-
-                return total;
-        }
-
         public int getTotalTrocasEsperando() {
 
                 int total = 0;
