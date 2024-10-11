@@ -159,7 +159,7 @@ public class App {
     public void detalharProposta(){
         ArrayList<Trade> propostas = usuarioAtual.getTrocasRecebidas();
         for(int i=0;i<propostas.size();i++){
-            System.out.println(i+". "+propostas.get(i).getSender().getNome());
+            System.out.println(i+". "+propostas.get(i).getSender().getNome()+" | "+propostas.get(i).getItemDesejado().getname());
         }
 
         if(!propostas.isEmpty()) {
@@ -170,6 +170,7 @@ public class App {
                 if (number < propostas.size() && number >= 0) {
                     Trade propEscolhida = propostas.get(number);
                     System.out.println("Proposta esolhida: ");
+                    System.err.println("|             Nome               |             Item               |   Preço   | Cod   |=========|             Nome               |             Item               |   Preço   | Cod   | Hora|     Data      |");
                     propEscolhida.verProposta();
                     System.out.println();
                     System.out.println("=== Você aceita a proposta? ===");
@@ -236,7 +237,7 @@ public class App {
             System.out.println("[6] Fazer oferta de troca");
             System.out.println("[7] Listar propostas feitas");
             System.out.println("[8] Listar propostas recebidas");
-            System.out.println("[9] Detalhar uma proposta");
+            System.out.println("[9] Aceitar/declinar proposta");
 
             // TODO Inserir tudo que um usuario possa fazer enquanto logado
 
