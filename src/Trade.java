@@ -33,7 +33,10 @@ public class Trade {
         public void trocar(){
                 ArrayList<Item> inventario1 = getSender().getInventario();
                 ArrayList<Item> inventario2 = getReceiver().getInventario();
+                
 
+
+                if(Sender.getItem(itemOferecido.getcod()) != null && Receiver.getItem(itemDesejado.getcod()) != null){
                 inventario1.add(itemDesejado);
                 getSender().deleteItem(itemOferecido.getcod());
 
@@ -44,6 +47,8 @@ public class Trade {
                 trocas.remove(this);
                 trocas = getReceiver().getTrocasRecebidas();
                 trocas.remove(this);
+                }
+                
         }
 
         public void declinar(){

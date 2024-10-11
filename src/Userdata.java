@@ -343,8 +343,8 @@ public class Userdata {
 
         public ArrayList<Integer> gabarito() {
 
-                int[] cods = new int[getitemcod()];
-                double[] vals = new double[getitemcod()];
+                int[] cods = new int[sizemercado()];
+                double[] vals = new double[sizemercado()];
                 int control = 0;
                 ArrayList<Integer> gabarito = new ArrayList<>();
 
