@@ -1,11 +1,37 @@
-Nome: Alice Borstmann Koepp 
+# Trabalho de GCS grupo 1
 
-Links para commits:  
+ 21/09/2024 
+ * Criamos o repositorio
+ * Organizamos cada função 
+    
+# Funções 
 
-[Inicial commit](https://github.com/TIAG0MIRANDA/Trabalho-de-GCS-grupo-1/commit/338f967dbdfd5de01f5394e4e1b58aea680a612b)
+# Augusto 
+1) O sistema deverá permitir que um novo jogador se cadastre no sistema. O sistema deverá permitir
+que um jogador entre no sistema com seu email e pin.
+# Heitor 
+1.1) Colocar prooposta de compra 
+# Henrique 
+2) O sistema deverá permitir a um jogador listar os seus próprios itens, em ordem alfabética.
+3) O sistema deverá permitir a um jogador listar os itens dos demais jogadores, por ordem de preço.
+4) O sistema deverá permitir a um jogador buscar itens fornecendo parte do nome, descrição,
+categoria.
+##
+# Daniel
+5) O sistema deverá permitir a um jogador selecionar um item seu e um item de outro usuário para
+abrir uma proposta de troca. A proposta de troca deverá registrar dia e hora.
 
-[Corrigindo o inicial](https://github.com/TIAG0MIRANDA/Trabalho-de-GCS-grupo-1/commit/0d76434dd9f0309e263cedbc712352465e63c1f9)
+## 
+# Alice 
+6) O sistema deverá listar as propostas de troca na tela do jogador logado.
+##
+# Francine
+7) O jogador logado poderá selecionar uma proposta de troca para ver seus detalhes e aceitar ou
+declinar a proposta.
 
-[ajustando](https://github.com/TIAG0MIRANDA/Trabalho-de-GCS-grupo-1/commit/dc66e839e406b02e841d5a826d3d6a6ad0f4b9a5) 
-
-[ajustando2](https://github.com/TIAG0MIRANDA/Trabalho-de-GCS-grupo-1/commit/006afe4fd069f95d122e5c33d36a1687450b8b30)
+# Tiago
+8) O sistema deverá exibir estatísticas gerais, como:
+a) Total de usuários
+b) Total de itens (e a soma total de seus preços)
+c) Quantidade de Propostas de troca aceitas / declinadas
+d) Quantidade total de propostas aguardando resposta.
