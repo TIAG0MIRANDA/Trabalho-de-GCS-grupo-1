@@ -24,11 +24,10 @@ public class Trade {
                 this.Receiver=Receiver;
         }
 
-        public String verProposta(){
-                return ("O item que o usuário: "+Sender.getNome()+" ofereceu é:"
-                +itemOferecido.getname()+" e ele quer o"+itemDesejado.getname()
-                +" do usuário: "+Receiver.getNome()+" em troca.\n A troca foi feita as:"+momentoTroca.getHour()
-                +" da data:"+momentoTroca.getDayOfMonth()+"-"+momentoTroca.getMonth()+"-"+momentoTroca.getYear()+".");
+        public void verProposta(){
+
+                System.out.printf("| %-30s | %-30s | %-9.2f |  %-3d  |troca por| %-30s | %-30s | %-9.2f |  %-3d  |%2d:%2d|%2d/%s/%4s|\n",Sender.getNome(),itemOferecido.getname(),itemOferecido.getprice(),itemOferecido.getcod(),Receiver.getNome(),itemDesejado.getname(),itemDesejado.getprice(),itemDesejado.getcod(),momentoTroca.getHour(),momentoTroca.getMinute(),momentoTroca.getDayOfMonth(),momentoTroca.getMonth(),momentoTroca.getYear());
+                
         }
 
         public void trocar(){

@@ -208,20 +208,26 @@ public class User {
         if (trocasFeitas.isEmpty()) {
             System.out.println("Nenhuma proposta de troca feita.");
         } else {
+            System.out.println();
+            System.err.println("|             Nome               |             Item               |   Preço   | Cod   |=========|             Nome               |             Item               |   Preço   | Cod   | Hora|     Data      |");
             for (Trade troca : trocasFeitas) {
-                System.out.println("Proposta feita: " + troca.verProposta());
+                troca.verProposta();
             }
         }
+        System.out.println("digite algo para voltar");
     }
 
     public void listarTrocasRecebidas() {
         if (trocasRecebidas.isEmpty()) {
             System.out.println("Nenhuma proposta de troca recebida.");
         } else {
+            System.err.println("|             Nome               |             Item               |   Preço   | Cod   |=========|             Nome               |             Item               |   Preço   | Cod   | Hora|     Data      |");
             for (Trade troca : trocasRecebidas) {
-                System.out.println("Proposta recebida: " + troca.verProposta());
+                troca.verProposta();
             }
         }
+        System.out.println("digite algo para voltar");
+
     }
 
 }
