@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Armazenamento de usuarios
@@ -523,10 +524,10 @@ public class Userdata {
 
         }
 
-        public void printabuscaitem(String item) {
+        public void printabuscaitem(String item, Scanner sc) {
 
-                System.out.println(
-                                "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+                ArrayList<Item> busca = new ArrayList<>();
+                ArrayList<String> nomes = new ArrayList<>();
 
                 for (int i = 0; i < usuarios.size(); i++) {
 
@@ -535,8 +536,87 @@ public class Userdata {
                                 if (usuarios.get(i).getInventario().get(j).getname().toUpperCase()
                                                 .contains(item.toUpperCase())) {
 
-                                        System.out.printf("| %-18s ", usuarios.get(i).getNome());
-                                        usuarios.get(i).getInventario().get(j).itemPrint();
+                                        busca.add(usuarios.get(i).getInventario().get(j));
+                                        nomes.add(usuarios.get(i).getNome());
+                                }
+
+                        }
+
+                }
+
+                if (busca.size() == 0) {
+
+                        System.out.println("sem resultados de busca,digite algo para retornar!");
+                        sc.next();
+                        return;
+
+                }
+
+                int pagina = 0, paginas = busca.size() / 10, itenslast = busca.size() % 10;
+
+                if (itenslast != 0) {
+
+                        paginas++;
+
+                }
+
+                while (pagina < paginas) {
+                        if (pagina == paginas - 1) {
+
+                                itenslast = busca.size();
+
+                        } else {
+
+                                itenslast = (10 * pagina) + 10;
+                        }
+
+                        Clear.clear();
+
+                        System.out.println(
+                                        "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+
+                        for (int i = 10 * pagina; i < itenslast; i++) {
+
+                                System.out.printf("| %-18s ", nomes.get(i));
+                                busca.get(i).itemPrint();
+
+                        }
+
+                        if (pagina == 0) {
+
+                                System.out.println("digite 2 para pagina seguinte:");
+                                sc.next();
+                                pagina++;
+
+                        } else if (pagina == paginas - 1) {
+
+                                System.out.println("digite 1 para pagina anterior 2 para voltar:");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
+
+                                }
+
+                        }
+
+                        else {
+
+                                System.out.println("digite 1 para pagina anterior 2 para pagina seguinte");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
 
                                 }
 
@@ -546,10 +626,10 @@ public class Userdata {
 
         }
 
-        public void printabuscaNome(String name) {
+        public void printabuscaNome(String name, Scanner sc) {
 
-                System.out.println(
-                                "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+                ArrayList<Item> busca = new ArrayList<>();
+                ArrayList<String> nomes = new ArrayList<>();
 
                 for (int i = 0; i < usuarios.size(); i++) {
 
@@ -557,8 +637,87 @@ public class Userdata {
 
                                 if (usuarios.get(i).getNome().toUpperCase().contains(name.toUpperCase())) {
 
-                                        System.out.printf("| %-18s ", usuarios.get(i).getNome());
-                                        usuarios.get(i).getInventario().get(j).itemPrint();
+                                        busca.add(usuarios.get(i).getInventario().get(j));
+                                        nomes.add(usuarios.get(i).getNome());
+                                }
+
+                        }
+
+                }
+
+                if (busca.size() == 0) {
+
+                        System.out.println("sem resultados de busca,digite algo para retornar!");
+                        sc.next();
+                        return;
+
+                }
+
+                int pagina = 0, paginas = busca.size() / 10, itenslast = busca.size() % 10;
+
+                if (itenslast != 0) {
+
+                        paginas++;
+
+                }
+
+                while (pagina < paginas) {
+                        if (pagina == paginas - 1) {
+
+                                itenslast = busca.size();
+
+                        } else {
+
+                                itenslast = (10 * pagina) + 10;
+                        }
+
+                        Clear.clear();
+
+                        System.out.println(
+                                        "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+
+                        for (int i = 10 * pagina; i < itenslast; i++) {
+
+                                System.out.printf("| %-18s ", nomes.get(i));
+                                busca.get(i).itemPrint();
+
+                        }
+
+                        if (pagina == 0) {
+
+                                System.out.println("digite 2 para pagina seguinte:");
+                                sc.next();
+                                pagina++;
+
+                        } else if (pagina == paginas - 1) {
+
+                                System.out.println("digite 1 para pagina anterior 2 para voltar:");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
+
+                                }
+
+                        }
+
+                        else {
+
+                                System.out.println("digite 1 para pagina anterior 2 para pagina seguinte");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
 
                                 }
 
@@ -568,10 +727,10 @@ public class Userdata {
 
         }
 
-        public void printabuscadef(String def) {
+        public void printabuscadef(String def, Scanner sc) {
 
-                System.out.println(
-                                "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+                ArrayList<Item> busca = new ArrayList<>();
+                ArrayList<String> nomes = new ArrayList<>();
 
                 for (int i = 0; i < usuarios.size(); i++) {
 
@@ -580,8 +739,87 @@ public class Userdata {
                                 if (usuarios.get(i).getInventario().get(j).getdef().toUpperCase()
                                                 .contains(def.toUpperCase())) {
 
-                                        System.out.printf("| %-18s ", usuarios.get(i).getNome());
-                                        usuarios.get(i).getInventario().get(j).itemPrint();
+                                        busca.add(usuarios.get(i).getInventario().get(j));
+                                        nomes.add(usuarios.get(i).getNome());
+                                }
+
+                        }
+
+                }
+
+                if (busca.size() == 0) {
+
+                        System.out.println("sem resultados de busca,digite algo para retornar!");
+                        sc.next();
+                        return;
+
+                }
+
+                int pagina = 0, paginas = busca.size() / 10, itenslast = busca.size() % 10;
+
+                if (itenslast != 0) {
+
+                        paginas++;
+
+                }
+
+                while (pagina < paginas) {
+                        if (pagina == paginas - 1) {
+
+                                itenslast = busca.size();
+
+                        } else {
+
+                                itenslast = (10 * pagina) + 10;
+                        }
+
+                        Clear.clear();
+
+                        System.out.println(
+                                        "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+
+                        for (int i = 10 * pagina; i < itenslast; i++) {
+
+                                System.out.printf("| %-18s ", nomes.get(i));
+                                busca.get(i).itemPrint();
+
+                        }
+
+                        if (pagina == 0) {
+
+                                System.out.println("digite 2 para pagina seguinte:");
+                                sc.next();
+                                pagina++;
+
+                        } else if (pagina == paginas - 1) {
+
+                                System.out.println("digite 1 para pagina anterior 2 para voltar:");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
+
+                                }
+
+                        }
+
+                        else {
+
+                                System.out.println("digite 1 para pagina anterior 2 para pagina seguinte");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
 
                                 }
 
@@ -591,10 +829,10 @@ public class Userdata {
 
         }
 
-        public void printabuscactg(String ctg) {
+        public void printabuscactg(String ctg, Scanner sc) {
 
-                System.out.println(
-                                "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+                ArrayList<Item> busca = new ArrayList<>();
+                ArrayList<String> nomes = new ArrayList<>();
 
                 for (int i = 0; i < usuarios.size(); i++) {
 
@@ -603,8 +841,79 @@ public class Userdata {
                                 if (usuarios.get(i).getInventario().get(j).getctg().toUpperCase()
                                                 .contains(ctg.toUpperCase())) {
 
-                                        System.out.printf("| %-18s ", usuarios.get(i).getNome());
-                                        usuarios.get(i).getInventario().get(j).itemPrint();
+                                        busca.add(usuarios.get(i).getInventario().get(j));
+                                        nomes.add(usuarios.get(i).getNome());
+                                }
+
+                        }
+
+                }
+
+                int pagina = 0, paginas = busca.size() / 10, itenslast = busca.size() % 10;
+
+                if (itenslast != 0) {
+
+                        paginas++;
+
+                }
+
+                while (pagina < paginas) {
+                        if (pagina == paginas - 1) {
+
+                                itenslast = busca.size();
+
+                        } else {
+
+                                itenslast = (10 * pagina) + 10;
+                        }
+
+                        Clear.clear();
+
+                        System.out.println(
+                                        "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+
+                        for (int i = 10 * pagina; i < itenslast; i++) {
+
+                                System.out.printf("| %-18s ", nomes.get(i));
+                                busca.get(i).itemPrint();
+
+                        }
+
+                        if (pagina == 0) {
+
+                                System.out.println("digite 2 para pagina seguinte:");
+                                sc.next();
+                                pagina++;
+
+                        } else if (pagina == paginas - 1) {
+
+                                System.out.println("digite 1 para pagina anterior 2 para voltar:");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
+
+                                }
+
+                        }
+
+                        else {
+
+                                System.out.println("digite 1 para pagina anterior 2 para pagina seguinte");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
 
                                 }
 
@@ -706,18 +1015,67 @@ public class Userdata {
         }
 
         public double getTotalpreco() {
-                                                
-                double price =0;
 
-                for(int i=0;i<usuarios.size ();i++) {
+                double price = 0;
 
-                               for(int j =0; j < usuarios.get(i).getInventario().size(); j++) {
+                for (int i = 0; i < usuarios.size(); i++) {
 
-                        price += usuarios.get(i).getInventario().get(j).getprice();
+                        for (int j = 0; j < usuarios.get(i).getInventario().size(); j++) {
+
+                                price += usuarios.get(i).getInventario().get(j).getprice();
 
                         }
                 }
 
                 return price;
         }
+
+        public int getTotalTrocasAceitas() {
+
+                int total = 0;
+
+                for (int i = 0; i < usuarios.size(); i++) {
+
+                        for (int j = 0; j < usuarios.get(i).getTrocasFeitas().size(); j++) {
+
+                                total++;
+
+                        }
+                }
+
+                return total;
+        }
+
+        public int getTotalTrocasDeclinads() {
+
+                int total = 0;
+
+                for (int i = 0; i < usuarios.size(); i++) {
+
+                        for (int j = 0; j < usuarios.get(i).getTrocasFeitas().size(); j++) {
+
+                                total++;
+
+                        }
+                }
+
+                return total;
+        }
+
+        public int getTotalTrocasEsperando() {
+
+                int total = 0;
+
+                for (int i = 0; i < usuarios.size(); i++) {
+
+                        for (int j = 0; j < usuarios.get(i).getTrocasFeitas().size(); j++) {
+
+                                total++;
+
+                        }
+                }
+
+                return total;
+        }
+
 }
