@@ -159,7 +159,7 @@ public class App {
     public void detalharProposta(){
         ArrayList<Trade> propostas = usuarioAtual.getTrocasRecebidas();
         for(int i=0;i<propostas.size();i++){
-            System.out.println(i+". "+propostas.get(i).getSender().getNome());
+            System.out.println(i+". "+propostas.get(i).getSender().getNome()+" | "+propostas.get(i).getItemDesejado().getname());
         }
 
         if(!propostas.isEmpty()) {
@@ -170,6 +170,7 @@ public class App {
                 if (number < propostas.size() && number >= 0) {
                     Trade propEscolhida = propostas.get(number);
                     System.out.println("Proposta esolhida: ");
+                    System.err.println("|             Nome               |             Item               |   Preço   | Cod   |=========|             Nome               |             Item               |   Preço   | Cod   | Hora|     Data      |");
                     propEscolhida.verProposta();
                     System.out.println();
                     System.out.println("=== Você aceita a proposta? ===");
@@ -236,7 +237,7 @@ public class App {
             System.out.println("[6] Fazer oferta de troca");
             System.out.println("[7] Listar propostas feitas");
             System.out.println("[8] Listar propostas recebidas");
-            System.out.println("[9] Detalhar uma proposta");
+            System.out.println("[9] Aceitar/declinar proposta");
 
             // TODO Inserir tudo que um usuario possa fazer enquanto logado
 
@@ -252,7 +253,7 @@ public class App {
 
                     Clear.clear();
                     usuarioAtual.ordenaitems();
-                    usuarioAtual.inventarioprint();
+                    usuarioAtual.inventarioprint(sc);
                     sc.nextLine();
 
                     break;
@@ -294,7 +295,7 @@ public class App {
                     System.out.println("[3] Categoria");
                     System.out.println("[4] Usuario");
 
-                    switch (sc.nextInt()) {
+                    switch (BetterScanner.scannerInt(sc)) {
                         case 1:
 
                             Clear.clear();
@@ -311,11 +312,11 @@ public class App {
 
                             Clear.clear();
 
-                            usuarios.printabuscaitem(name);
-                            System.out.println("Digite algo para voltar");
-                            sc.next();
-
+                            usuarios.printabuscaitem(name,sc);
+                    
                             Clear.clear();
+
+                            name = "";
 
                             break;
 
@@ -334,10 +335,8 @@ public class App {
 
                             Clear.clear();
 
-                            usuarios.printabuscadef(def);
-                            System.out.println("Digite algo para voltar");
-                            sc.next();
-
+                            usuarios.printabuscadef(def,sc);
+                        
                             Clear.clear();
 
                             break;
@@ -364,11 +363,7 @@ public class App {
                             } while (ctg.length() == 0);
 
                             Clear.clear();
-
-                            usuarios.printabuscactg(ctg);
-                            System.out.println("Digite algo para voltar");
-                            sc.next();
-
+                            usuarios.printabuscactg(ctg,sc);
                             Clear.clear();
 
                             break;
@@ -387,10 +382,8 @@ public class App {
 
                             Clear.clear();
 
-                            usuarios.printabuscaNome(user);
-                            System.out.println("Digite algo para voltar");
-                            sc.next();
-
+                            usuarios.printabuscaNome(user,sc);
+                           
                             Clear.clear();
 
                             break;
@@ -462,16 +455,16 @@ public class App {
                         System.out.printf("[3] valor do item - %f\n", valitem);
                         System.out.printf("[4] categoria - %s\n", itemctg);
                         System.out.println("Para confirmar digite 1");
+                        System.out.println("Para cancelar digite 2");
 
                         if (BetterScanner.scannerInt(sc) == 1) {
                             loop = usuarios.additemto(nomeitem, defitem, valitem, usuarioAtual.getId(), itemctg);
                             usuarioAtual = usuarios.login(e, s);
                             usuarioAtual.ordenaitems();
 
-                        }
+                        }else {
 
-                        else {
-
+                            loop = true; 
                             nomeitem = "";
                             defitem = "";
                             itemctg = "";
@@ -487,11 +480,34 @@ public class App {
                     int codQuer, codOferta;// Codigo do item que o usuário quer e o que ele vai dar em troca
                     User remetente, destinatario;// User remetente IOW:O usuário atual esperançosamente
                     // e Destinatario é o user da pessoa que tem o item desejado
+                    while (true) {
+
+                    Clear.clear(); 
                     System.out.print("Insira o código do item que deseja adquirir:");
                     codQuer = sc.nextInt();
+                    System.out.println("|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+                    usuarios.getowner(codQuer).getItem(codQuer).itemPrint();
+                    System.out.println("Confirma digite 1,selecionar outro item digite 2");
+                    if(BetterScanner.scannerInt(sc) == 1){
+                        break;
+                    }
 
+                    }
+
+                    while (true) {
+                    Clear.clear();
+                    System.out.println("Insira o código do item que deseja adquirir:"+codQuer);
+                    System.out.println("|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+                    usuarios.getowner(codQuer).getItem(codQuer).itemPrint();
                     System.out.print("Insira o código do item que deseja oferecer em troca:");
                     codOferta = sc.nextInt();
+                    System.out.println("|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+                    usuarios.getowner(codOferta).getItem(codOferta).itemPrint();
+                    System.out.println("Confirma digite 1,selecionar outro item digite 2");
+                    if(BetterScanner.scannerInt(sc) == 1){
+                        break;
+                     }
+                    }
 
                     remetente = usuarios.getowner(codOferta);
                     if (remetente == usuarioAtual) {
@@ -513,7 +529,7 @@ public class App {
 
                 case "5":
                     Clear.clear();
-                    System.out.println("digite o codigo do item a ser deletado!");
+                    System.out.print("digite o codigo do item a ser deletado:");
                     int c = BetterScanner.scannerInt(sc);
                     if (usuarioAtual.id == usuarios.getowner(c).getId()) {
                         Clear.clear();
@@ -528,6 +544,7 @@ public class App {
                     } else {
                         System.out.println("O voce nao tem um item com esse codigo!");
                         System.out.println("digite algo para voltar");
+                        sc.next();
                     }
 
                     break;
