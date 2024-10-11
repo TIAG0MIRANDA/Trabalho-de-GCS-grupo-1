@@ -29,8 +29,8 @@ public class Userdata {
                 usuarios.add(new User("Mario", "mario@email.com", "234567", (usuarios.size())));
                 usuarios.add(new User("Ana", "ana@email.com", "098765", (usuarios.size())));
                 usuarios.add(new User("Joao", "Joao@email.com", "528529", (usuarios.size())));
-                usuarios.add(new User("Daniel", "pedro@email.com", "974168", (usuarios.size())));
-                usuarios.add(new User("Leandra", "pedro@email.com", "876543", (usuarios.size())));
+                usuarios.add(new User("Daniel", "daniel@email.com", "974168", (usuarios.size())));
+                usuarios.add(new User("Leandra", "leandra@email.com", "876543", (usuarios.size())));
                 usuarios.add(new User("Leandra", "1", "1", (usuarios.size())));
 
                 usuarios.get(0).addItem("Lança-chamas", "Arma que dispara chamas de alta temperatura", 3500.00, 0,
