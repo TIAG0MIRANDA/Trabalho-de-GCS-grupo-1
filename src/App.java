@@ -464,11 +464,11 @@ public class App {
                         System.out.println("Para cancelar digite 2");
 
                         if (BetterScanner.scannerInt(sc) == 1) {
-                            loop = usuarios.additemto(nomeitem, defitem, valitem, usuarioAtual.getId(), itemctg);
-                            usuarioAtual = usuarios.login(e, s);
-                            usuarioAtual.ordenaitems();
+                            
+                            loop = usuarios.additemto(nomeitem, defitem, valitem, usuarioAtual.getId(), itemctg)    
+                        }
+                        else {
 
-                        } else {
 
                             loop = true;
                             nomeitem = "";

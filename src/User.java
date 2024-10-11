@@ -22,6 +22,23 @@ public class User {
 
     public void addItem(String name, String def, double val, int cod, String ctg) {
 
+        int x = 1;
+
+        String basename = name;
+      
+        for(Item item: inventory){
+
+            if(name.equals(item.getname())){
+
+                name = (basename+"_"+String.valueOf(x));
+                x++;
+
+            }
+
+
+
+        }
+
         inventory.add(new Item(name, def, val, cod, ctg));
 
     }
