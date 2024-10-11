@@ -524,7 +524,7 @@ public class Userdata {
 
         }
 
-        public void printabuscaitem(String item,Scanner sc) {
+        public void printabuscaitem(String item, Scanner sc) {
 
                 ArrayList<Item> busca = new ArrayList<>();
                 ArrayList<String> nomes = new ArrayList<>();
@@ -533,7 +533,8 @@ public class Userdata {
 
                         for (int j = 0; j < usuarios.get(i).getInventario().size(); j++) {
 
-                                if (usuarios.get(i).getInventario().get(j).getname().toUpperCase().contains(item.toUpperCase())) {
+                                if (usuarios.get(i).getInventario().get(j).getname().toUpperCase()
+                                                .contains(item.toUpperCase())) {
 
                                         busca.add(usuarios.get(i).getInventario().get(j));
                                         nomes.add(usuarios.get(i).getNome());
@@ -543,7 +544,7 @@ public class Userdata {
 
                 }
 
-                if(busca.size() == 0){
+                if (busca.size() == 0) {
 
                         System.out.println("sem resultados de busca,digite algo para retornar!");
                         sc.next();
@@ -551,7 +552,7 @@ public class Userdata {
 
                 }
 
-                int pagina = 0, paginas = busca.size() / 10, itenslast = busca.size()%10;
+                int pagina = 0, paginas = busca.size() / 10, itenslast = busca.size() % 10;
 
                 if (itenslast != 0) {
 
@@ -559,77 +560,73 @@ public class Userdata {
 
                 }
 
-                while(pagina < paginas){
-                if (pagina == paginas - 1) {
+                while (pagina < paginas) {
+                        if (pagina == paginas - 1) {
 
-                        itenslast = busca.size();
+                                itenslast = busca.size();
 
-                } else {
+                        } else {
 
-                        itenslast = (10 * pagina) + 10;
+                                itenslast = (10 * pagina) + 10;
+                        }
+
+                        Clear.clear();
+
+                        System.out.println(
+                                        "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+
+                        for (int i = 10 * pagina; i < itenslast; i++) {
+
+                                System.out.printf("| %-18s ", nomes.get(i));
+                                busca.get(i).itemPrint();
+
+                        }
+
+                        if (pagina == 0) {
+
+                                System.out.println("digite 2 para pagina seguinte:");
+                                sc.next();
+                                pagina++;
+
+                        } else if (pagina == paginas - 1) {
+
+                                System.out.println("digite 1 para pagina anterior 2 para voltar:");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
+
+                                }
+
+                        }
+
+                        else {
+
+                                System.out.println("digite 1 para pagina anterior 2 para pagina seguinte");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
+
+                                }
+
+                        }
+
                 }
-
-                Clear.clear();
-
-                System.out.println(
-                                "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
-
-                for (int i = 10*pagina; i < itenslast; i++) {
-                        
-                        System.out.printf("| %-18s ", nomes.get(i));
-                        busca.get(i).itemPrint();
-                
-
-                }
-
-                if(pagina == 0){
-            
-                        System.out.println("digite 2 para pagina seguinte:");
-                        sc.next();
-                        pagina++;
-        
-                    }
-                    else if (pagina == paginas - 1) {
-        
-                        System.out.println("digite 1 para pagina anterior 2 para voltar:");
-                        
-                        if(BetterScanner.scannerInt(sc) == 1){
-        
-                            pagina--;
-                        }
-        
-                        else{
-        
-                            pagina++;
-                        
-                        }
-        
-                    }
-        
-                    else {
-        
-                        System.out.println("digite 1 para pagina anterior 2 para pagina seguinte");
-        
-                        if(BetterScanner.scannerInt(sc) == 1){
-        
-                            pagina--;
-                        }
-        
-                        else{
-        
-                            pagina++;
-                        
-                        }
-        
-                    }
-        
 
         }
 
-
-        }
-
-        public void printabuscaNome(String name,Scanner sc) {
+        public void printabuscaNome(String name, Scanner sc) {
 
                 ArrayList<Item> busca = new ArrayList<>();
                 ArrayList<String> nomes = new ArrayList<>();
@@ -648,7 +645,7 @@ public class Userdata {
 
                 }
 
-                if(busca.size() == 0){
+                if (busca.size() == 0) {
 
                         System.out.println("sem resultados de busca,digite algo para retornar!");
                         sc.next();
@@ -656,7 +653,7 @@ public class Userdata {
 
                 }
 
-                int pagina = 0, paginas = busca.size() / 10, itenslast = busca.size()%10;
+                int pagina = 0, paginas = busca.size() / 10, itenslast = busca.size() % 10;
 
                 if (itenslast != 0) {
 
@@ -664,77 +661,73 @@ public class Userdata {
 
                 }
 
-                while(pagina < paginas){
-                if (pagina == paginas - 1) {
+                while (pagina < paginas) {
+                        if (pagina == paginas - 1) {
 
-                        itenslast = busca.size();
+                                itenslast = busca.size();
 
-                } else {
+                        } else {
 
-                        itenslast = (10 * pagina) + 10;
+                                itenslast = (10 * pagina) + 10;
+                        }
+
+                        Clear.clear();
+
+                        System.out.println(
+                                        "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+
+                        for (int i = 10 * pagina; i < itenslast; i++) {
+
+                                System.out.printf("| %-18s ", nomes.get(i));
+                                busca.get(i).itemPrint();
+
+                        }
+
+                        if (pagina == 0) {
+
+                                System.out.println("digite 2 para pagina seguinte:");
+                                sc.next();
+                                pagina++;
+
+                        } else if (pagina == paginas - 1) {
+
+                                System.out.println("digite 1 para pagina anterior 2 para voltar:");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
+
+                                }
+
+                        }
+
+                        else {
+
+                                System.out.println("digite 1 para pagina anterior 2 para pagina seguinte");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
+
+                                }
+
+                        }
+
                 }
-
-                Clear.clear();
-
-                System.out.println(
-                                "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
-
-                for (int i = 10*pagina; i < itenslast; i++) {
-                        
-                        System.out.printf("| %-18s ", nomes.get(i));
-                        busca.get(i).itemPrint();
-                
-
-                }
-
-                if(pagina == 0){
-            
-                        System.out.println("digite 2 para pagina seguinte:");
-                        sc.next();
-                        pagina++;
-        
-                    }
-                    else if (pagina == paginas - 1) {
-        
-                        System.out.println("digite 1 para pagina anterior 2 para voltar:");
-                        
-                        if(BetterScanner.scannerInt(sc) == 1){
-        
-                            pagina--;
-                        }
-        
-                        else{
-        
-                            pagina++;
-                        
-                        }
-        
-                    }
-        
-                    else {
-        
-                        System.out.println("digite 1 para pagina anterior 2 para pagina seguinte");
-        
-                        if(BetterScanner.scannerInt(sc) == 1){
-        
-                            pagina--;
-                        }
-        
-                        else{
-        
-                            pagina++;
-                        
-                        }
-        
-                    }
-        
 
         }
 
-
-        }
-
-        public void printabuscadef(String def,Scanner sc) {
+        public void printabuscadef(String def, Scanner sc) {
 
                 ArrayList<Item> busca = new ArrayList<>();
                 ArrayList<String> nomes = new ArrayList<>();
@@ -743,7 +736,8 @@ public class Userdata {
 
                         for (int j = 0; j < usuarios.get(i).getInventario().size(); j++) {
 
-                                if (usuarios.get(i).getInventario().get(j).getdef().toUpperCase().contains(def.toUpperCase())) {
+                                if (usuarios.get(i).getInventario().get(j).getdef().toUpperCase()
+                                                .contains(def.toUpperCase())) {
 
                                         busca.add(usuarios.get(i).getInventario().get(j));
                                         nomes.add(usuarios.get(i).getNome());
@@ -753,7 +747,7 @@ public class Userdata {
 
                 }
 
-                if(busca.size() == 0){
+                if (busca.size() == 0) {
 
                         System.out.println("sem resultados de busca,digite algo para retornar!");
                         sc.next();
@@ -761,7 +755,7 @@ public class Userdata {
 
                 }
 
-                int pagina = 0, paginas = busca.size() / 10, itenslast = busca.size()%10;
+                int pagina = 0, paginas = busca.size() / 10, itenslast = busca.size() % 10;
 
                 if (itenslast != 0) {
 
@@ -769,78 +763,74 @@ public class Userdata {
 
                 }
 
-                while(pagina < paginas){
-                if (pagina == paginas - 1) {
+                while (pagina < paginas) {
+                        if (pagina == paginas - 1) {
 
-                        itenslast = busca.size();
+                                itenslast = busca.size();
 
-                } else {
+                        } else {
 
-                        itenslast = (10 * pagina) + 10;
+                                itenslast = (10 * pagina) + 10;
+                        }
+
+                        Clear.clear();
+
+                        System.out.println(
+                                        "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+
+                        for (int i = 10 * pagina; i < itenslast; i++) {
+
+                                System.out.printf("| %-18s ", nomes.get(i));
+                                busca.get(i).itemPrint();
+
+                        }
+
+                        if (pagina == 0) {
+
+                                System.out.println("digite 2 para pagina seguinte:");
+                                sc.next();
+                                pagina++;
+
+                        } else if (pagina == paginas - 1) {
+
+                                System.out.println("digite 1 para pagina anterior 2 para voltar:");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
+
+                                }
+
+                        }
+
+                        else {
+
+                                System.out.println("digite 1 para pagina anterior 2 para pagina seguinte");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
+
+                                }
+
+                        }
+
                 }
-
-                Clear.clear();
-
-                System.out.println(
-                                "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
-
-                for (int i = 10*pagina; i < itenslast; i++) {
-                        
-                        System.out.printf("| %-18s ", nomes.get(i));
-                        busca.get(i).itemPrint();
-                
-
-                }
-
-                if(pagina == 0){
-            
-                        System.out.println("digite 2 para pagina seguinte:");
-                        sc.next();
-                        pagina++;
-        
-                    }
-                    else if (pagina == paginas - 1) {
-        
-                        System.out.println("digite 1 para pagina anterior 2 para voltar:");
-                        
-                        if(BetterScanner.scannerInt(sc) == 1){
-        
-                            pagina--;
-                        }
-        
-                        else{
-        
-                            pagina++;
-                        
-                        }
-        
-                    }
-        
-                    else {
-        
-                        System.out.println("digite 1 para pagina anterior 2 para pagina seguinte");
-        
-                        if(BetterScanner.scannerInt(sc) == 1){
-        
-                            pagina--;
-                        }
-        
-                        else{
-        
-                            pagina++;
-                        
-                        }
-        
-                    }
-        
-
-        }
 
         }
 
         public void printabuscactg(String ctg, Scanner sc) {
 
-                
                 ArrayList<Item> busca = new ArrayList<>();
                 ArrayList<String> nomes = new ArrayList<>();
 
@@ -848,7 +838,8 @@ public class Userdata {
 
                         for (int j = 0; j < usuarios.get(i).getInventario().size(); j++) {
 
-                                if (usuarios.get(i).getInventario().get(j).getctg().toUpperCase().contains(ctg.toUpperCase())) {
+                                if (usuarios.get(i).getInventario().get(j).getctg().toUpperCase()
+                                                .contains(ctg.toUpperCase())) {
 
                                         busca.add(usuarios.get(i).getInventario().get(j));
                                         nomes.add(usuarios.get(i).getNome());
@@ -858,7 +849,7 @@ public class Userdata {
 
                 }
 
-                int pagina = 0, paginas = busca.size() / 10, itenslast = busca.size()%10;
+                int pagina = 0, paginas = busca.size() / 10, itenslast = busca.size() % 10;
 
                 if (itenslast != 0) {
 
@@ -866,72 +857,69 @@ public class Userdata {
 
                 }
 
-                while(pagina < paginas){
-                if (pagina == paginas - 1) {
+                while (pagina < paginas) {
+                        if (pagina == paginas - 1) {
 
-                        itenslast = busca.size();
+                                itenslast = busca.size();
 
-                } else {
+                        } else {
 
-                        itenslast = (10 * pagina) + 10;
+                                itenslast = (10 * pagina) + 10;
+                        }
+
+                        Clear.clear();
+
+                        System.out.println(
+                                        "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+
+                        for (int i = 10 * pagina; i < itenslast; i++) {
+
+                                System.out.printf("| %-18s ", nomes.get(i));
+                                busca.get(i).itemPrint();
+
+                        }
+
+                        if (pagina == 0) {
+
+                                System.out.println("digite 2 para pagina seguinte:");
+                                sc.next();
+                                pagina++;
+
+                        } else if (pagina == paginas - 1) {
+
+                                System.out.println("digite 1 para pagina anterior 2 para voltar:");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
+
+                                }
+
+                        }
+
+                        else {
+
+                                System.out.println("digite 1 para pagina anterior 2 para pagina seguinte");
+
+                                if (BetterScanner.scannerInt(sc) == 1) {
+
+                                        pagina--;
+                                }
+
+                                else {
+
+                                        pagina++;
+
+                                }
+
+                        }
+
                 }
-
-                Clear.clear();
-
-                System.out.println(
-                                "|        Dono        |              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
-
-                for (int i = 10*pagina; i < itenslast; i++) {
-                        
-                        System.out.printf("| %-18s ", nomes.get(i));
-                        busca.get(i).itemPrint();
-                
-
-                }
-
-                if(pagina == 0){
-            
-                        System.out.println("digite 2 para pagina seguinte:");
-                        sc.next();
-                        pagina++;
-        
-                    }
-                    else if (pagina == paginas - 1) {
-        
-                        System.out.println("digite 1 para pagina anterior 2 para voltar:");
-                        
-                        if(BetterScanner.scannerInt(sc) == 1){
-        
-                            pagina--;
-                        }
-        
-                        else{
-        
-                            pagina++;
-                        
-                        }
-        
-                    }
-        
-                    else {
-        
-                        System.out.println("digite 1 para pagina anterior 2 para pagina seguinte");
-        
-                        if(BetterScanner.scannerInt(sc) == 1){
-        
-                            pagina--;
-                        }
-        
-                        else{
-        
-                            pagina++;
-                        
-                        }
-        
-                    }
-        
-
-        }
 
         }
 
@@ -1073,6 +1061,7 @@ public class Userdata {
 
                 return total;
         }
+
         public int getTotalTrocasEsperando() {
 
                 int total = 0;
