@@ -252,7 +252,7 @@ public class App {
 
                     Clear.clear();
                     usuarioAtual.ordenaitems();
-                    usuarioAtual.inventarioprint();
+                    usuarioAtual.inventarioprint(sc);
                     sc.nextLine();
 
                     break;
