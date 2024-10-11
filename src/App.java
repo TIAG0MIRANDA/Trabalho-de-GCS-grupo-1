@@ -465,7 +465,7 @@ public class App {
 
                         if (BetterScanner.scannerInt(sc) == 1) {
                             
-                            loop = usuarios.additemto(nomeitem, defitem, valitem, usuarioAtual.getId(), itemctg)    
+                            loop = usuarios.additemto(nomeitem, defitem, valitem, usuarioAtual.getId(), itemctg);    
                         }
                         else {
 
