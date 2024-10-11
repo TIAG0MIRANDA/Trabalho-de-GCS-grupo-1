@@ -5,7 +5,7 @@ public class Proposta {
     private Scanner sc = new Scanner(System.in);
     private Userdata usuarios = new Userdata(); // usuários serão guardados aqui
     private User usuarioAtual = null; // usuário logado no sistema
-    private int totalDeclinadas = 0, totalAceitas = 0;
+    private int totalTrocasDeclinadas = 0, TotalTrocasAceitas = 0;
 
     public void detalharProposta() {
         ArrayList<Trade> propostas = usuarioAtual.getTrocasRecebidas();
@@ -29,10 +29,10 @@ public class Proposta {
                     number = sc.nextInt();
                     if (number == 1) {
                         propEscolhida.trocar();
-                        totalAceitas++;
+                        TotalTrocasAceitas++;
                     } else if (number == 2) {
                         propEscolhida.declinar();
-                        totalDeclinadas++;
+                        totalTrocasDeclinadas++;
                     } else {
                         System.out.println("Número inválido, tente novamente!");
                         continue;
