@@ -5,12 +5,9 @@ public class App {
     private Scanner sc = new Scanner(System.in);
     private Userdata usuarios = new Userdata(); // usuarios serao guardados aqui
     private User usuarioAtual = null; // usuario logado no sistema
+    private int totalTrocasDeclinadas = 0, totalTrocasAceitas = 0;
 
-    private Lootboxdata lootboxes = new Lootboxdata(); //lootboxes
-
-    int totalTrocasAceitas = 0;
-    // int TotalTrocasDeclinads = 0;
-
+    private Lootboxdata lootboxes = new Lootboxdata(); // lootboxes
 
     String e, s;
 
@@ -56,7 +53,8 @@ public class App {
     }
 
     /**
-     * Metodo de login, verificar documentacao dos metodos validaLogin() e login() em Userdata.
+     * Metodo de login, verificar documentacao dos metodos validaLogin() e login()
+     * em Userdata.
      */
     public void login() {
         System.out.println("Digite seu e-mail: ");
@@ -186,8 +184,10 @@ public class App {
                     number = sc.nextInt();
                     if (number == 1) {
                         propEscolhida.trocar();
+                        totalTrocasAceitas++;
                     } else if (number == 2) {
                         propEscolhida.declinar();
+                        totalTrocasDeclinadas++;
                     } else {
                         System.out.println("Número inválido, tente novamente!");
                         continue;
@@ -205,9 +205,7 @@ public class App {
         int totalUsuarios = usuarios.getTotalUsuarios();
         int totalItens = usuarios.sizemercado();
         double totalpreco = usuarios.getTotalpreco();
-        int totalTrocasAceitas = usuarios.getTotalTrocasAceitas();
-        int totalTrocasDeclinadas = usuarios.getTotalTrocasDeclinads();
-        int totalTrocasEspeando = usuarios.getTotalTrocasEsperando();
+        int totalTrocasEsperando = usuarios.getTotalTrocasEsperando();
 
         System.out.println("=== Estatísticas do Sistema ===");
         System.out.println("Total de usuários cadastrados: " + totalUsuarios);
@@ -215,7 +213,7 @@ public class App {
         System.out.println("Total de preço: " + totalpreco);
         System.out.println("Total de troca aceitas: " + totalTrocasAceitas);
         System.out.println("Total de troca declinadas: " + totalTrocasDeclinadas);
-        System.out.println("Total de troca aguardando respostas: " + totalTrocasEspeando);
+        System.out.println("Total de troca aguardando respostas: " + totalTrocasEsperando);
         System.out.println("Digite qualquer tecla para voltar.");
         sc.nextLine();
     }
@@ -246,8 +244,6 @@ public class App {
             System.out.println("[8] Listar propostas recebidas");
             System.out.println("[9] Aceitar/declinar proposta");
             System.out.println("[10] Abrir Lootboxes");
-
-          
 
             // TODO Inserir tudo que um usuario possa fazer enquanto logado
 
@@ -586,10 +582,11 @@ public class App {
             }
         }
     }
-    public void verLootboxes(){
+
+    public void verLootboxes() {
         boolean a = true;
         Item temp = null;
-        while(a) {
+        while (a) {
             Clear.clear();
             System.out.println("Digite qual lootbox deseja abrir: ");
             System.out.println("[1] Itens Comuns");
@@ -597,15 +594,15 @@ public class App {
             System.out.println("[3] Itens raros");
             System.out.println("[4] Itens lendários");
             System.out.println("[0] Voltar");
-            switch (sc.nextLine()){
+            switch (sc.nextLine()) {
                 case "1":
                     temp = lootboxes.getLootboxes().get(0).abrir();
                     System.out.println("Voce recebeu: " + temp.getname());
                     System.out.println("Digite qualquer tecla. ");
                     sc.nextLine();
                     usuarios.additemto(temp.getname(), temp.getdef(),
-                                       temp.getprice(), usuarioAtual.getId(),
-                                       temp.getctg());
+                            temp.getprice(), usuarioAtual.getId(),
+                            temp.getctg());
                     a = false;
                     break;
                 case "2":
