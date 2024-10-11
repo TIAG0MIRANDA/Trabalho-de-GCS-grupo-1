@@ -5,8 +5,9 @@ public class App {
     private Scanner sc = new Scanner(System.in);
     private Userdata usuarios = new Userdata(); // usuarios serao guardados aqui
     private User usuarioAtual = null; // usuario logado no sistema
-    int totalTrocasAceitas = 0;
-    //int TotalTrocasDeclinads = 0;
+    private int totalTrocasDeclinadas = 0, totalTrocasAceitas = 0;
+
+    private Lootboxdata lootboxes = new Lootboxdata(); // lootboxes
 
     String e, s;
 
@@ -51,8 +52,10 @@ public class App {
         }
     }
 
-    // Metodo de login, verificar documentacao dos metodos validaLogin() e login()
-    // em Userdata.
+    /**
+     * Metodo de login, verificar documentacao dos metodos validaLogin() e login()
+     * em Userdata.
+     */
     public void login() {
         System.out.println("Digite seu e-mail: ");
         e = sc.nextLine();
@@ -156,13 +159,14 @@ public class App {
 
     }
 
-    public void detalharProposta(){
+    public void detalharProposta() {
         ArrayList<Trade> propostas = usuarioAtual.getTrocasRecebidas();
-        for(int i=0;i<propostas.size();i++){
-            System.out.println(i+". "+propostas.get(i).getSender().getNome()+" | "+propostas.get(i).getItemDesejado().getname());
+        for (int i = 0; i < propostas.size(); i++) {
+            System.out.println(i + ". " + propostas.get(i).getSender().getNome() + " | "
+                    + propostas.get(i).getItemDesejado().getname());
         }
 
-        if(!propostas.isEmpty()) {
+        if (!propostas.isEmpty()) {
             System.out.println("=== Escolha uma proposta: ===");
             while (true) {
                 System.out.println("Digite o número da proposta escolhida: ");
@@ -170,7 +174,8 @@ public class App {
                 if (number < propostas.size() && number >= 0) {
                     Trade propEscolhida = propostas.get(number);
                     System.out.println("Proposta esolhida: ");
-                    System.err.println("|             Nome               |             Item               |   Preço   | Cod   |=========|             Nome               |             Item               |   Preço   | Cod   | Hora|     Data      |");
+                    System.err.println(
+                            "|             Nome               |             Item               |   Preço   | Cod   |=========|             Nome               |             Item               |   Preço   | Cod   | Hora|     Data      |");
                     propEscolhida.verProposta();
                     System.out.println();
                     System.out.println("=== Você aceita a proposta? ===");
@@ -179,8 +184,10 @@ public class App {
                     number = sc.nextInt();
                     if (number == 1) {
                         propEscolhida.trocar();
+                        totalTrocasAceitas++;
                     } else if (number == 2) {
                         propEscolhida.declinar();
+                        totalTrocasDeclinadas++;
                     } else {
                         System.out.println("Número inválido, tente novamente!");
                         continue;
@@ -188,7 +195,7 @@ public class App {
                     break;
                 }
             }
-        }else{
+        } else {
             System.out.println("Você não recebeu nenhuma proposta!");
         }
 
@@ -198,9 +205,7 @@ public class App {
         int totalUsuarios = usuarios.getTotalUsuarios();
         int totalItens = usuarios.sizemercado();
         double totalpreco = usuarios.getTotalpreco();
-        int totalTrocasAceitas = usuarios.getTotalTrocasAceitas();
-        int totalTrocasDeclinadas = usuarios.getTotalTrocasDeclinads();
-        int totalTrocasEspeando = usuarios.getTotalTrocasEsperando();
+        int totalTrocasEsperando = usuarios.getTotalTrocasEsperando();
 
         System.out.println("=== Estatísticas do Sistema ===");
         System.out.println("Total de usuários cadastrados: " + totalUsuarios);
@@ -208,9 +213,9 @@ public class App {
         System.out.println("Total de preço: " + totalpreco);
         System.out.println("Total de troca aceitas: " + totalTrocasAceitas);
         System.out.println("Total de troca declinadas: " + totalTrocasDeclinadas);
-        System.out.println("Total de troca aguardando respostas: " + totalTrocasEspeando);
+        System.out.println("Total de troca aguardando respostas: " + totalTrocasEsperando);
         System.out.println("Digite qualquer tecla para voltar.");
-        sc.nextLine(); 
+        sc.nextLine();
     }
 
     /**
@@ -238,6 +243,7 @@ public class App {
             System.out.println("[7] Listar propostas feitas");
             System.out.println("[8] Listar propostas recebidas");
             System.out.println("[9] Aceitar/declinar proposta");
+            System.out.println("[10] Abrir Lootboxes");
 
             // TODO Inserir tudo que um usuario possa fazer enquanto logado
 
@@ -312,8 +318,8 @@ public class App {
 
                             Clear.clear();
 
-                            usuarios.printabuscaitem(name,sc);
-                    
+                            usuarios.printabuscaitem(name, sc);
+
                             Clear.clear();
 
                             name = "";
@@ -335,8 +341,8 @@ public class App {
 
                             Clear.clear();
 
-                            usuarios.printabuscadef(def,sc);
-                        
+                            usuarios.printabuscadef(def, sc);
+
                             Clear.clear();
 
                             break;
@@ -363,7 +369,7 @@ public class App {
                             } while (ctg.length() == 0);
 
                             Clear.clear();
-                            usuarios.printabuscactg(ctg,sc);
+                            usuarios.printabuscactg(ctg, sc);
                             Clear.clear();
 
                             break;
@@ -382,8 +388,8 @@ public class App {
 
                             Clear.clear();
 
-                            usuarios.printabuscaNome(user,sc);
-                           
+                            usuarios.printabuscaNome(user, sc);
+
                             Clear.clear();
 
                             break;
@@ -409,7 +415,7 @@ public class App {
                                 sc.nextLine();
                                 nomeitem = "";
                             }
-                        Clear.clear();
+                            Clear.clear();
                         } while (nomeitem.length() <= 0);
                         Clear.clear();
                         do {
@@ -417,16 +423,16 @@ public class App {
                             System.out.printf("[1] nome do item %s\n", nomeitem);
                             System.out.printf("[2] definição do item \n", defitem);
                             defitem = sc.nextLine();
-                            
+
                             if (Censura.censura(defitem)) {
                                 System.out.println("O sistema nao aceita nomes ofensivos."
-                                        + "\n Digite qualquer tecla"); 
-                                        
+                                        + "\n Digite qualquer tecla");
+
                                 sc.nextLine();
                                 defitem = "";
                             }
-                        }   while (defitem.length() <= 0);                      
-                        
+                        } while (defitem.length() <= 0);
+
                         Clear.clear();
                         System.out.printf("[1] nome do item %s\n", nomeitem);
                         System.out.printf("[2] definição do item %s\n", defitem);
@@ -459,11 +465,12 @@ public class App {
 
                         if (BetterScanner.scannerInt(sc) == 1) {
                             
-                            loop = usuarios.additemto(nomeitem, defitem, valitem, usuarioAtual.getId(), itemctg);
-                            
-                        }else {
+                            loop = usuarios.additemto(nomeitem, defitem, valitem, usuarioAtual.getId(), itemctg)    
+                        }
+                        else {
 
-                            loop = true; 
+
+                            loop = true;
                             nomeitem = "";
                             defitem = "";
                             itemctg = "";
@@ -481,31 +488,34 @@ public class App {
                     // e Destinatario é o user da pessoa que tem o item desejado
                     while (true) {
 
-                    Clear.clear(); 
-                    System.out.print("Insira o código do item que deseja adquirir:");
-                    codQuer = sc.nextInt();
-                    System.out.println("|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
-                    usuarios.getowner(codQuer).getItem(codQuer).itemPrint();
-                    System.out.println("Confirma digite 1,selecionar outro item digite 2");
-                    if(BetterScanner.scannerInt(sc) == 1){
-                        break;
-                    }
+                        Clear.clear();
+                        System.out.print("Insira o código do item que deseja adquirir:");
+                        codQuer = sc.nextInt();
+                        System.out.println(
+                                "|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+                        usuarios.getowner(codQuer).getItem(codQuer).itemPrint();
+                        System.out.println("Confirma digite 1,selecionar outro item digite 2");
+                        if (BetterScanner.scannerInt(sc) == 1) {
+                            break;
+                        }
 
                     }
 
                     while (true) {
-                    Clear.clear();
-                    System.out.println("Insira o código do item que deseja adquirir:"+codQuer);
-                    System.out.println("|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
-                    usuarios.getowner(codQuer).getItem(codQuer).itemPrint();
-                    System.out.print("Insira o código do item que deseja oferecer em troca:");
-                    codOferta = sc.nextInt();
-                    System.out.println("|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
-                    usuarios.getowner(codOferta).getItem(codOferta).itemPrint();
-                    System.out.println("Confirma digite 1,selecionar outro item digite 2");
-                    if(BetterScanner.scannerInt(sc) == 1){
-                        break;
-                     }
+                        Clear.clear();
+                        System.out.println("Insira o código do item que deseja adquirir:" + codQuer);
+                        System.out.println(
+                                "|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+                        usuarios.getowner(codQuer).getItem(codQuer).itemPrint();
+                        System.out.print("Insira o código do item que deseja oferecer em troca:");
+                        codOferta = sc.nextInt();
+                        System.out.println(
+                                "|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+                        usuarios.getowner(codOferta).getItem(codOferta).itemPrint();
+                        System.out.println("Confirma digite 1,selecionar outro item digite 2");
+                        if (BetterScanner.scannerInt(sc) == 1) {
+                            break;
+                        }
                     }
 
                     remetente = usuarios.getowner(codOferta);
@@ -514,7 +524,7 @@ public class App {
                         quer = destinatario.getItem(codQuer);
                         oferta = remetente.getItem(codOferta);
                         ofertaTroca = new Trade(oferta, quer, remetente, destinatario);
-                        
+
                         usuarios.addpedidoTrocato(ofertaTroca, usuarios.getUserIndexbyId(usuarioAtual.getId()));
                         usuarios.addsolicitacaoTrocato(ofertaTroca, destinatario.getId());
                         usuarioAtual = usuarios.login(e, s);
@@ -564,7 +574,72 @@ public class App {
                     detalharProposta();
                     sc.nextLine();
                     break;
+                case "10":
+                    Clear.clear();
+                    verLootboxes();
+                    break;
                 default:
+            }
+        }
+    }
+
+    public void verLootboxes() {
+        boolean a = true;
+        Item temp = null;
+        while (a) {
+            Clear.clear();
+            System.out.println("Digite qual lootbox deseja abrir: ");
+            System.out.println("[1] Itens Comuns");
+            System.out.println("[2] Itens Tecnológicos");
+            System.out.println("[3] Itens raros");
+            System.out.println("[4] Itens lendários");
+            System.out.println("[0] Voltar");
+            switch (sc.nextLine()) {
+                case "1":
+                    temp = lootboxes.getLootboxes().get(0).abrir();
+                    System.out.println("Voce recebeu: " + temp.getname());
+                    System.out.println("Digite qualquer tecla. ");
+                    sc.nextLine();
+                    usuarios.additemto(temp.getname(), temp.getdef(),
+                            temp.getprice(), usuarioAtual.getId(),
+                            temp.getctg());
+                    a = false;
+                    break;
+                case "2":
+                    temp = lootboxes.getLootboxes().get(1).abrir();
+                    System.out.println("Voce recebeu: " + temp.getname());
+                    System.out.println("Digite qualquer tecla. ");
+                    sc.nextLine();
+                    usuarios.additemto(temp.getname(), temp.getdef(),
+                            temp.getprice(), usuarioAtual.getId(),
+                            temp.getctg());
+                    a = false;
+                    break;
+                case "3":
+                    temp = lootboxes.getLootboxes().get(2).abrir();
+                    System.out.println("Voce recebeu: " + temp.getname());
+                    System.out.println("Digite qualquer tecla. ");
+                    sc.nextLine();
+                    usuarios.additemto(temp.getname(), temp.getdef(),
+                            temp.getprice(), usuarioAtual.getId(),
+                            temp.getctg());
+                    a = false;
+                    break;
+                case "4":
+                    temp = lootboxes.getLootboxes().get(3).abrir();
+                    System.out.println("Voce recebeu: " + temp.getname());
+                    System.out.println("Digite qualquer tecla. ");
+                    sc.nextLine();
+                    usuarios.additemto(temp.getname(), temp.getdef(),
+                            temp.getprice(), usuarioAtual.getId(),
+                            temp.getctg());
+                    a = false;
+                    break;
+                case "0":
+                    a = false;
+                    break;
+                default:
+                    break;
             }
         }
     }
