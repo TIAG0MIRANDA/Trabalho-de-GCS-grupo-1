@@ -294,7 +294,7 @@ public class App {
                     System.out.println("[3] Categoria");
                     System.out.println("[4] Usuario");
 
-                    switch (sc.nextInt()) {
+                    switch (BetterScanner.scannerInt(sc)) {
                         case 1:
 
                             Clear.clear();
@@ -311,11 +311,11 @@ public class App {
 
                             Clear.clear();
 
-                            usuarios.printabuscaitem(name);
-                            System.out.println("Digite algo para voltar");
-                            sc.next();
-
+                            usuarios.printabuscaitem(name,sc);
+                    
                             Clear.clear();
+
+                            name = "";
 
                             break;
 
@@ -334,10 +334,8 @@ public class App {
 
                             Clear.clear();
 
-                            usuarios.printabuscadef(def);
-                            System.out.println("Digite algo para voltar");
-                            sc.next();
-
+                            usuarios.printabuscadef(def,sc);
+                        
                             Clear.clear();
 
                             break;
@@ -364,11 +362,7 @@ public class App {
                             } while (ctg.length() == 0);
 
                             Clear.clear();
-
-                            usuarios.printabuscactg(ctg);
-                            System.out.println("Digite algo para voltar");
-                            sc.next();
-
+                            usuarios.printabuscactg(ctg,sc);
                             Clear.clear();
 
                             break;
@@ -387,10 +381,8 @@ public class App {
 
                             Clear.clear();
 
-                            usuarios.printabuscaNome(user);
-                            System.out.println("Digite algo para voltar");
-                            sc.next();
-
+                            usuarios.printabuscaNome(user,sc);
+                           
                             Clear.clear();
 
                             break;
