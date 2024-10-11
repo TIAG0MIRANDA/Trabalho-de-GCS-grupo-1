@@ -4,8 +4,7 @@ public class Lootbox {
     private ArrayList<Item> itens= new ArrayList<>();
     private String nome;
 
-    public Lootbox(ArrayList<Item> itens, String nome) {
-        this.itens = itens;
+    public Lootbox(String nome){
         this.nome = nome;
     }
 
@@ -16,5 +15,13 @@ public class Lootbox {
     public Item abrir(){
         int rand = (int) (Math.random() * itens.size());
         return itens.get(rand);
+    }
+
+    /**
+     * Adiciona um item na lootbox
+     * @param item Item a ser adicionado
+     */
+    public void inserir(Item item){
+        itens.add(item);
     }
 }

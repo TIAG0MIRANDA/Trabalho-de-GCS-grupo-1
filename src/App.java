@@ -5,6 +5,7 @@ public class App {
     private Scanner sc = new Scanner(System.in);
     private Userdata usuarios = new Userdata(); // usuarios serao guardados aqui
     private User usuarioAtual = null; // usuario logado no sistema
+    private Lootboxdata lootboxes = new Lootboxdata(); //lootboxes
 
     String e, s;
 
@@ -49,8 +50,9 @@ public class App {
         }
     }
 
-    // Metodo de login, verificar documentacao dos metodos validaLogin() e login()
-    // em Userdata.
+    /**
+     * Metodo de login, verificar documentacao dos metodos validaLogin() e login() em Userdata.
+     */
     public void login() {
         System.out.println("Digite seu e-mail: ");
         e = sc.nextLine();
@@ -229,8 +231,7 @@ public class App {
             System.out.println("[7] Listar propostas feitas");
             System.out.println("[8] Listar propostas recebidas");
             System.out.println("[9] Detalhar uma proposta");
-
-            // TODO Inserir tudo que um usuario possa fazer enquanto logado
+            System.out.println("[10] Abrir Lootboxes");
 
             switch (sc.nextLine()) {
                 case "0":
@@ -540,7 +541,71 @@ public class App {
                     detalharProposta();
                     sc.nextLine();
                     break;
+                case "10":
+                    Clear.clear();
+                    verLootboxes();
+                    break;
                 default:
+            }
+        }
+    }
+    public void verLootboxes(){
+        boolean a = true;
+        Item temp = null;
+        while(a) {
+            Clear.clear();
+            System.out.println("Digite qual lootbox deseja abrir: ");
+            System.out.println("[1] Itens Comuns");
+            System.out.println("[2] Itens Tecnológicos");
+            System.out.println("[3] Itens raros");
+            System.out.println("[4] Itens lendários");
+            System.out.println("[0] Voltar");
+            switch (sc.nextLine()){
+                case "1":
+                    temp = lootboxes.getLootboxes().get(0).abrir();
+                    System.out.println("Voce recebeu: " + temp.getname());
+                    System.out.println("Digite qualquer tecla. ");
+                    sc.nextLine();
+                    usuarios.additemto(temp.getname(), temp.getdef(),
+                                       temp.getprice(), usuarioAtual.getId(),
+                                       temp.getctg());
+                    a = false;
+                    break;
+                case "2":
+                    temp = lootboxes.getLootboxes().get(1).abrir();
+                    System.out.println("Voce recebeu: " + temp.getname());
+                    System.out.println("Digite qualquer tecla. ");
+                    sc.nextLine();
+                    usuarios.additemto(temp.getname(), temp.getdef(),
+                            temp.getprice(), usuarioAtual.getId(),
+                            temp.getctg());
+                    a = false;
+                    break;
+                case "3":
+                    temp = lootboxes.getLootboxes().get(2).abrir();
+                    System.out.println("Voce recebeu: " + temp.getname());
+                    System.out.println("Digite qualquer tecla. ");
+                    sc.nextLine();
+                    usuarios.additemto(temp.getname(), temp.getdef(),
+                            temp.getprice(), usuarioAtual.getId(),
+                            temp.getctg());
+                    a = false;
+                    break;
+                case "4":
+                    temp = lootboxes.getLootboxes().get(3).abrir();
+                    System.out.println("Voce recebeu: " + temp.getname());
+                    System.out.println("Digite qualquer tecla. ");
+                    sc.nextLine();
+                    usuarios.additemto(temp.getname(), temp.getdef(),
+                            temp.getprice(), usuarioAtual.getId(),
+                            temp.getctg());
+                    a = false;
+                    break;
+                case "0":
+                    a = false;
+                    break;
+                default:
+                    break;
             }
         }
     }
