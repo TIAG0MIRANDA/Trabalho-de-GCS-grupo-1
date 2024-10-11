@@ -479,11 +479,34 @@ public class App {
                     int codQuer, codOferta;// Codigo do item que o usuário quer e o que ele vai dar em troca
                     User remetente, destinatario;// User remetente IOW:O usuário atual esperançosamente
                     // e Destinatario é o user da pessoa que tem o item desejado
+                    while (true) {
+
+                    Clear.clear(); 
                     System.out.print("Insira o código do item que deseja adquirir:");
                     codQuer = sc.nextInt();
+                    System.out.println("|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+                    usuarios.getowner(codQuer).getItem(codQuer).itemPrint();
+                    System.out.println("Confirma digite 1,selecionar outro item digite 2");
+                    if(BetterScanner.scannerInt(sc) == 1){
+                        break;
+                    }
 
+                    }
+
+                    while (true) {
+                    Clear.clear();
+                    System.out.println("Insira o código do item que deseja adquirir:"+codQuer);
+                    System.out.println("|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+                    usuarios.getowner(codQuer).getItem(codQuer).itemPrint();
                     System.out.print("Insira o código do item que deseja oferecer em troca:");
                     codOferta = sc.nextInt();
+                    System.out.println("|              Item              |                                Descriçao                               |   Valor   |         Ctg        |  Cod  |");
+                    usuarios.getowner(codOferta).getItem(codOferta).itemPrint();
+                    System.out.println("Confirma digite 1,selecionar outro item digite 2");
+                    if(BetterScanner.scannerInt(sc) == 1){
+                        break;
+                     }
+                    }
 
                     remetente = usuarios.getowner(codOferta);
                     if (remetente == usuarioAtual) {
