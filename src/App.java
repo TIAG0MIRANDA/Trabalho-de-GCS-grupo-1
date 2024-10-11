@@ -454,16 +454,16 @@ public class App {
                         System.out.printf("[3] valor do item - %f\n", valitem);
                         System.out.printf("[4] categoria - %s\n", itemctg);
                         System.out.println("Para confirmar digite 1");
+                        System.out.println("Para cancelar digite 2");
 
                         if (BetterScanner.scannerInt(sc) == 1) {
                             loop = usuarios.additemto(nomeitem, defitem, valitem, usuarioAtual.getId(), itemctg);
                             usuarioAtual = usuarios.login(e, s);
                             usuarioAtual.ordenaitems();
 
-                        }
+                        }else {
 
-                        else {
-
+                            loop = true; 
                             nomeitem = "";
                             defitem = "";
                             itemctg = "";
@@ -505,7 +505,7 @@ public class App {
 
                 case "5":
                     Clear.clear();
-                    System.out.println("digite o codigo do item a ser deletado!");
+                    System.out.print("digite o codigo do item a ser deletado:");
                     int c = BetterScanner.scannerInt(sc);
                     if (usuarioAtual.id == usuarios.getowner(c).getId()) {
                         Clear.clear();
@@ -520,6 +520,7 @@ public class App {
                     } else {
                         System.out.println("O voce nao tem um item com esse codigo!");
                         System.out.println("digite algo para voltar");
+                        sc.next();
                     }
 
                     break;
