@@ -48,11 +48,7 @@ public class Trade {
                 trocas = getReceiver().getTrocasRecebidas();
                 trocas.remove(this);
                 }
-                else{
-
-                        System.out.println("A troca nao esta mais disponivel");
-
-                }
+                
         }
 
         public void declinar(){
